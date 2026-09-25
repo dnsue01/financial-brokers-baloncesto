@@ -146,6 +146,14 @@ p { margin: 0; max-width: 65ch; }
 .team--alt .team__tag, .team--alt p, .team--alt dt { color: var(--on-yellow-muted); }
 .team h3 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 18px; max-width: 12ch; }
 .team p { color: var(--on-light-muted); }
+.form { margin-top: 28px; }
+.form__label { display: block; font-size: .8rem; color: var(--on-light-muted); margin-bottom: 10px; }
+.team--alt .form__label { color: var(--on-yellow-muted); }
+.form__row { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.form__cell { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-ctl); font: 900 1.3rem/1 var(--display); }
+.form__cell--w { background: var(--navy); color: var(--yellow); }
+.form__cell--l { background: rgba(10, 18, 56, .1); color: var(--on-light-muted); box-shadow: inset 0 0 0 1px rgba(10, 18, 56, .18); }
+.team--alt .form__cell--l { color: var(--on-yellow-muted); background: rgba(10, 18, 56, .08); }
 .team__meta { display: flex; flex-wrap: wrap; gap: 20px 40px; margin: auto 0 0; padding-top: 28px; }
 .team__meta div { border-top: 2px solid currentColor; padding-top: 12px; }
 .team__meta dt { font-size: .8rem; color: var(--on-light-muted); }

@@ -30,7 +30,7 @@ const FIXTURES = [
 
 const VIDEOS = [
   { id: "3199540490072185", title: "Ascenso a Primera y Final Four", sub: "La victoria que dio el ascenso al club" },
-  { id: "305840216957655", title: "Visita a Colindres", sub: "Partido de liga en Segunda Autonómica" },
+  { id: "305840216957655", title: "Visita a Colindres", sub: "Partido de liga, 62-52 para el local" },
   { id: "2017895515657901", title: "Resumen de noviembre", sub: "Temporada 2025/26, los dos equipos", tall: true },
 ];
 
@@ -117,6 +117,17 @@ function renderNext() {
     <div class="next__when"><b>${d.main} · ${d.sub}</b><span>${esc(next.venue || (next.home === false ? "Fuera de casa" : "C.P. Eloy Villanueva, Santander"))}</span></div>`;
 }
 
+function renderForm() {
+  document.querySelectorAll("[data-form]").forEach((box) => {
+    const played = FIXTURES.filter((f) => f.team === box.dataset.form && f.res).sort((a, b) => toDate(a) - toDate(b));
+    if (!played.length) return;
+    const label = played.map((f) => `${f.res === "W" ? "victoria" : "derrota"} ante ${f.rival}`).join(", ");
+    box.innerHTML = `<span class="form__label">Racha, noviembre 25/26</span>
+      <ol class="form__row" aria-label="${esc(label)}">${played.map((f) =>
+        `<li class="form__cell form__cell--${f.res === "W" ? "w" : "l"}" title="${esc(f.rival)}">${f.res === "W" ? "V" : "D"}</li>`).join("")}</ol>`;
+  });
+}
+
 function renderMedia() {
   const clip = (v) => `<figure class="clip${v.tall ? " clip--tall" : ""}">
       <div class="clip__frame" data-video="${v.id}"></div>
@@ -170,4 +181,5 @@ menu.addEventListener("click", (e) => {
 $("#year").textContent = new Date().getFullYear();
 renderNext();
 renderFixtures();
+renderForm();
 renderMedia();
