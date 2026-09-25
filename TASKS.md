@@ -1,9 +1,11 @@
 # Web Financial Brokers
 
-- [x] Investigar club (Instagram, Facebook, El Rincón del Basket, FCB, siguetuliga)
-- [x] Escudo y colores
-- [x] Primera versión publicada en GitHub Pages
-- [x] Rediseño con skill design-taste-frontend (pre-flight)
-- [x] Buscar vídeos (YouTube: nada; Facebook del club: 5, 3 embebibles con miniatura)
-- [x] Revisión visual escritorio y móvil
-- [ ] Calendario 2026/27 cuando lo publique la FCB
+- [x] Primera versión y rediseño con taste
+- [x] Investigar webs top (Valencia Basket, Real Madrid, Euroleague)
+- [x] Feed de Instagram automático (Chrome headless + Action)
+- [x] Calendario y resultados automáticos desde la API de la FCB
+- [x] Portada rotativa, tira de partidos con escudos, actualidad, bloques con foto
+- [ ] Verificar el workflow en GitHub Actions
+- [ ] Auditoría UX/UI: ronda 1
+- [ ] Auditoría UX/UI: ronda 2
+- [ ] Auditoría UX/UI: ronda 3
