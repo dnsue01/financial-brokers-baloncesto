@@ -25,10 +25,16 @@ const FIXTURES = [
   { season: "2025/26", team: "segunda", date: "2026-03", rival: "Baloncesto Colindres", home: null, res: null, note: "Segunda fase" },
   { season: "2025/26", team: "segunda", date: "2026-03", rival: "Arsan Astillero", home: null, res: null, note: "Segunda fase" },
   { season: "2025/26", team: "segunda", date: "2026-03", rival: "Daygon Baloncesto", home: null, res: null, note: "Segunda fase" },
-  { season: "2025/26", team: "segunda", date: "2026-03", rival: "Baloncesto Bezana", home: null, res: null, note: "Segunda fase · vuelta" },
+  { season: "2025/26", team: "segunda", date: "2026-03", rival: "Baloncesto Bezana", home: null, res: null, note: "Segunda fase, vuelta" },
 ];
 
-const INSTAGRAM_POSTS = ["DRNTrpDCLJh", "DSIANVCiGC_", "DVjWTorCPCf"];
+const VIDEOS = [
+  { id: "3199540490072185", title: "Ascenso a Primera y Final Four", sub: "La victoria que dio el ascenso al club" },
+  { id: "305840216957655", title: "Visita a Colindres", sub: "Partido de liga en Segunda Autonómica" },
+  { id: "2017895515657901", title: "Resumen de noviembre", sub: "Temporada 2025/26, los dos equipos", tall: true },
+];
+
+const INSTAGRAM_POSTS = ["DRNTrpDCLJh", "DVjWTorCPCf", "DP3mNkACFzc"];
 
 const US = "Brokers";
 const state = { team: "all", season: "2026/27" };
@@ -79,8 +85,8 @@ function renderFixtures() {
 
   $("#fixtures").innerHTML = list.map((f, i) => {
     const d = formatDate(f);
-    const where = f.venue ? ` · ${esc(f.venue)}` : f.home === true ? " · C.P. Eloy Villanueva" : "";
-    const note = f.note ? ` · ${esc(f.note)}` : "";
+    const where = f.venue ? `, en ${esc(f.venue)}` : f.home === true ? ", en C.P. Eloy Villanueva" : "";
+    const note = f.note ? `. ${esc(f.note)}` : "";
     return `<li class="fx" style="animation-delay:${Math.min(i, 10) * 30}ms">
       <div class="fx__date">${d.main}<small>${d.sub}</small></div>
       <div><div class="fx__teams">${matchup(f)}</div><span class="fx__comp">${TEAMS[f.team]}${where}${note}</span></div>
@@ -94,11 +100,10 @@ function renderNext() {
   const next = FIXTURES.filter((f) => hasTime(f) && toDate(f) > now).sort((a, b) => toDate(a) - toDate(b))[0];
 
   if (!next) {
-    $("#next").innerHTML = `<div class="next__label"><span>Próximo partido</span><i>2026/27</i></div>
+    $("#next").innerHTML = `<div class="next__label"><span>Próximo partido</span><i>Temporada 2026/27</i></div>
       <div class="next__empty">
-        <img class="crest-big" src="assets/escudo.jpg" alt="Escudo de Financial Brokers" width="96" height="96">
-        <h3>Pretemporada en marcha</h3>
-        <p>El calendario de la nueva temporada se publicará en breve. Mientras tanto, síguenos en redes para no perderte nada.</p>
+        <img src="assets/escudo.jpg" alt="Escudo de Financial Brokers" width="76" height="76">
+        <div><h3>Pretemporada</h3><p>El calendario se publicará en cuanto lo confirme la federación.</p></div>
       </div>`;
     return;
   }
@@ -112,23 +117,31 @@ function renderNext() {
     <div class="next__when"><b>${d.main} · ${d.sub}</b><span>${esc(next.venue || (next.home === false ? "Fuera de casa" : "C.P. Eloy Villanueva, Santander"))}</span></div>`;
 }
 
-function renderTicker() {
-  const items = ["#GoBrokers", "Primera División Nacional", "Segunda Autonómica", "C.P. Eloy Villanueva", "Santander · Cantabria", "Temporada 2026/27"];
-  const html = items.map((t) => `<span>${t}</span>`).join("");
-  $("#ticker").innerHTML = html + html;
-}
+function renderMedia() {
+  const clip = (v) => `<figure class="clip${v.tall ? " clip--tall" : ""}">
+      <div class="clip__frame" data-video="${v.id}"></div>
+      <figcaption><b>${esc(v.title)}</b><span>${esc(v.sub)}</span></figcaption>
+    </figure>`;
+  const wide = VIDEOS.filter((v) => !v.tall);
+  const tall = VIDEOS.filter((v) => v.tall);
+  $("#media").innerHTML = `<div class="media__stack">${wide.map(clip).join("")}</div>${tall.map(clip).join("")}`;
 
-function renderGallery() {
-  $("#gallery").innerHTML = INSTAGRAM_POSTS.map((id) =>
-    `<iframe src="https://www.instagram.com/p/${id}/embed/" loading="lazy" title="Publicación de Instagram de Financial Brokers" allowtransparency="true"></iframe>`
+  document.querySelectorAll("[data-video]").forEach((box) => {
+    const href = encodeURIComponent(`https://www.facebook.com/financialbbasket/videos/${box.dataset.video}/`);
+    const w = Math.round(box.clientWidth);
+    box.innerHTML = `<iframe src="https://www.facebook.com/plugins/video.php?href=${href}&show_text=false&width=${w}" loading="lazy" title="Vídeo de Financial Brokers en Facebook" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  });
+
+  $("#photos").innerHTML = INSTAGRAM_POSTS.map((id) =>
+    `<iframe src="https://www.instagram.com/p/${id}/embed/" loading="lazy" title="Publicación de Instagram de Financial Brokers"></iframe>`
   ).join("");
-  sizeGallery();
+  sizePhotos();
 }
 
-function sizeGallery() {
-  document.querySelectorAll("#gallery iframe").forEach((f) => { f.height = Math.round(f.clientWidth * 1.25 + 120); });
+function sizePhotos() {
+  document.querySelectorAll("#photos iframe").forEach((f) => { f.height = Math.round(f.clientWidth * 1.25 + 170); });
 }
-addEventListener("resize", sizeGallery);
+addEventListener("resize", sizePhotos);
 
 document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
   document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", x === b));
@@ -155,7 +168,6 @@ menu.addEventListener("click", (e) => {
 });
 
 $("#year").textContent = new Date().getFullYear();
-renderTicker();
 renderNext();
 renderFixtures();
-renderGallery();
+renderMedia();
