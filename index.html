@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financial Brokers Baloncesto · Santander</title>
+<meta name="description" content="Web oficial del C.D.E. Financial Brokers Aseguradores, club de baloncesto de Santander (Cantabria). Calendario, equipos, galería y contacto.">
+<meta name="theme-color" content="#0a1238">
+<meta property="og:title" content="Financial Brokers Baloncesto">
+<meta property="og:description" content="Club de baloncesto de Santander. Primera Nacional y Segunda Autonómica. #GoBrokers">
+<meta property="og:image" content="assets/escudo.jpg">
+<link rel="icon" href="assets/escudo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="Financial Brokers, inicio">
+      <img src="assets/escudo.jpg" alt="" width="44" height="44">
+      <span><b>Financial</b> Brokers</span>
+    </a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav id="menu" class="nav__menu" aria-label="Principal">
+      <a href="#calendario">Calendario</a>
+      <a href="#equipos">Equipos</a>
+      <a href="#club">Club</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto" class="btn btn--sm">Únete</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <svg class="hero__court" viewBox="0 0 1500 1400" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="currentColor" stroke-width="3">
+        <rect x="560" y="0" width="380" height="580"/>
+        <circle cx="750" cy="580" r="180"/>
+        <path d="M130 0v140a620 620 0 0 0 1240 0V0"/>
+        <circle cx="750" cy="1400" r="180"/>
+        <line x1="0" y1="1400" x2="1500" y2="1400"/>
+        <line x1="690" y1="120" x2="810" y2="120"/>
+        <circle cx="750" cy="160" r="22"/>
+      </g>
+    </svg>
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="eyebrow">C.D.E. Financial Brokers Aseguradores · Santander</p>
+        <h1 class="hero__title">Go<br><span>Brokers</span></h1>
+        <p class="hero__lead">Baloncesto sénior en Santander desde el C.P. Eloy Villanueva. Dos equipos, una camiseta y las ganas de competir cada fin de semana.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#calendario">Ver calendario</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/financialbbasket/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+        </div>
+      </div>
+      <aside class="next" aria-live="polite" id="next"></aside>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+  </section>
+
+  <section class="section" id="calendario">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Calendario y resultados</p>
+          <h2>Temporada <span id="season-label">2026/27</span></h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Filtrar por equipo">
+          <button role="tab" aria-selected="true" data-team="all">Todos</button>
+          <button role="tab" aria-selected="false" data-team="primera">Primera Nacional</button>
+          <button role="tab" aria-selected="false" data-team="segunda">Segunda Autonómica</button>
+        </div>
+      </div>
+      <div class="seasons" role="group" aria-label="Temporada">
+        <button data-season="2026/27" aria-pressed="true">2026/27</button>
+        <button data-season="2025/26" aria-pressed="false">2025/26</button>
+      </div>
+      <ol class="fixtures" id="fixtures"></ol>
+      <p class="note">Horarios y resultados oficiales en la app de la <a href="https://www.fecanbaloncesto.com/resultados-y-clasificaciones/" target="_blank" rel="noopener">Federación Cántabra de Baloncesto</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--ink" id="equipos">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Categorías</p>
+          <h2>Nuestros equipos</h2>
+        </div>
+      </div>
+      <div class="teams">
+        <article class="team">
+          <div class="team__num" aria-hidden="true">1ª</div>
+          <p class="team__tag">Sénior masculino</p>
+          <h3>Primera División Nacional</h3>
+          <p>El primer equipo. Compite en la máxima categoría autonómica de Cantabria contra clubes como AD Amide, Castrobasket, Pas Piélagos, Cantbasket 04 o Daygon.</p>
+          <dl class="team__meta">
+            <div><dt>Pista</dt><dd>C.P. Eloy Villanueva</dd></div>
+            <div><dt>Nov. 25/26</dt><dd>8º de 10</dd></div>
+          </dl>
+        </article>
+        <article class="team team--alt">
+          <div class="team__num" aria-hidden="true">2ª</div>
+          <p class="team__tag">Sénior masculino</p>
+          <h3>Segunda División Autonómica</h3>
+          <p>El segundo equipo, cantera de minutos y compromiso. En 2025/26 pasó a la segunda fase frente a Colindres, Astillero, Daygon y Bezana.</p>
+          <dl class="team__meta">
+            <div><dt>Pista</dt><dd>C.P. Eloy Villanueva</dd></div>
+            <div><dt>Nov. 25/26</dt><dd>4º de 8</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="club">
+    <div class="wrap club">
+      <div class="club__intro">
+        <p class="eyebrow">El club</p>
+        <h2>De Tercera Autonómica a Primera Nacional</h2>
+        <p>Financial Brokers nació en Santander ligado a la correduría de seguros que le da nombre. Temporada a temporada ha ido subiendo peldaños en el baloncesto cántabro con una idea sencilla: competir cada partido y disfrutar del juego.</p>
+        <div class="stats">
+          <div><b>2014</b><span>primer título</span></div>
+          <div><b>1</b><span>Copa de Cantabria</span></div>
+          <div><b>2</b><span>equipos sénior</span></div>
+        </div>
+      </div>
+      <ol class="timeline">
+        <li><time>2014/15</time><div><h3>Campeones de Tercera Autonómica</h3><p>Primer título de liga del club.</p></div></li>
+        <li><time>2016/17</time><div><h3>Copa de Cantabria y ascenso</h3><p>Campeones de la Copa de Cantabria sénior masculina y ascenso a Segunda Autonómica.</p></div></li>
+        <li><time>2017/18</time><div><h3>Ascenso a Primera Autonómica</h3><p>Segundo salto de categoría consecutivo.</p></div></li>
+        <li><time>2025/26</time><div><h3>Primera División Nacional</h3><p>El primer equipo compite en la categoría reina de Cantabria y el club suma un segundo equipo sénior. Tras noviembre: 50% de victorias.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--light" id="galeria">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Galería</p>
+          <h2>Brokers en estado puro</h2>
+        </div>
+        <a class="btn btn--dark" href="https://www.instagram.com/financialbbasket/" target="_blank" rel="noopener">@financialbbasket</a>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="section section--ink" id="patrocinadores">
+    <div class="wrap">
+      <p class="eyebrow">Patrocinadores</p>
+      <div class="sponsors">
+        <div class="sponsor"><b>Financialbrok</b><span>Correduría de seguros</span></div>
+        <div class="sponsor"><b>Intermodal Sea Solutions</b><span>Patrocinador oficial</span></div>
+        <a class="sponsor sponsor--cta" href="#contacto"><b>Tu marca aquí</b><span>Patrocina al club</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta" id="contacto">
+    <div class="wrap cta__in">
+      <div>
+        <p class="eyebrow">Contacto</p>
+        <h2>¿Quieres jugar, patrocinar o venir a vernos?</h2>
+        <p>Escríbenos y te contamos horarios de entrenamiento, pruebas y cómo colaborar con el club.</p>
+      </div>
+      <div class="cta__actions">
+        <a class="btn btn--big" href="mailto:financial.brokers.aseguradores@gmail.com?subject=Contacto%20desde%20la%20web">Escríbenos</a>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/financialbbasket/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/financialbbasket/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/Financialeros" target="_blank" rel="noopener">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <a class="brand" href="#top"><img src="assets/escudo.jpg" alt="" width="36" height="36"><span><b>Financial</b> Brokers</span></a>
+    <p>C.P. Eloy Villanueva · Santander, Cantabria</p>
+    <p>© <span id="year"></span> C.D.E. Financial Brokers Aseguradores</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
