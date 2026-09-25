@@ -4,4 +4,4 @@
 - [x] Escudo y colores
 - [x] index.html + styles.css + app.js
 - [x] Revisión visual escritorio/móvil (máx. 3 rondas)
-- [ ] Repo GitHub + Pages
+- [x] Repo GitHub + Pages
