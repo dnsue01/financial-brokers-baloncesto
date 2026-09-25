@@ -1,6 +1,6 @@
 const TEAMS = {
-  primera: "Primera División",
-  segunda: "Segunda Autonómica",
+  primera: "1ª División",
+  segunda: "Autonómica Sénior",
 };
 
 // Temporadas sin datos en la federación. La temporada activa llega sola en data/fixtures.json.
@@ -33,9 +33,14 @@ const VIDEOS = [
   { id: "2017895515657901", title: "Resumen de noviembre", sub: "Temporada 2025/26, los dos equipos", tall: true },
 ];
 
+
 const US = "Brokers";
 const SLIDE_MS = 7000;
+const STALE_DAYS = 60;
 let FIXTURES = [...ARCHIVE];
+let STANDINGS = {};
+let TEAM_INFO = {};
+let SEASON = null;
 const state = { team: "all", season: "2025/26", expanded: false };
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -44,21 +49,22 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hasDay = (f) => f.date.length >= 10;
 const hasTime = (f) => f.date.length > 10 && f.timeKnown !== false;
 const toDate = (f) => new Date(f.date.length === 7 ? f.date + "-01T00:00" : f.date.length === 10 ? f.date + "T00:00" : f.date);
-const initials = (name) => name.replace(/^(CB|AD|ADB|CD|UC|CBT)\s+/i, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-const crestUs = (size = 48) => `<img class="crest" src="assets/escudo.jpg" alt="" width="${size}" height="${size}">`;
-const crestThem = (f) => f.rivalCrest
-  ? `<img class="crest" src="${esc(f.rivalCrest)}" alt="" width="48" height="48" loading="lazy">`
-  : `<span class="crest crest--txt" aria-hidden="true">${esc(initials(f.rival))}</span>`;
 const startOfToday = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+const isUpcoming = (f) => !f.rest && !f.res && hasDay(f) && toDate(f) >= startOfToday();
+const byDate = (a, b) => toDate(a) - toDate(b);
+const nextFor = (team) => FIXTURES.filter((f) => f.team === team && isUpcoming(f)).sort(byDate)[0];
+const initials = (name) => name.replace(/^(CB|AD|ADB|CD|UC|CBT)\s+/i, "").split(/\s+/).filter((w) => /\p{L}/u.test(w)).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+const crestUs = (size = 48) => `<img class="crest" src="assets/escudo.jpg" alt="" width="${size}" height="${size}">`;
+const crestThem = (f, size = 48) => f.rivalCrest
+  ? `<img class="crest" src="${esc(f.rivalCrest)}" alt="" width="${size}" height="${size}" loading="lazy">`
+  : `<span class="crest crest--txt" aria-hidden="true">${esc(initials(f.rival || "?"))}</span>`;
 
 function formatDate(f) {
   const d = toDate(f);
-  if (!hasDay(f)) return { main: d.toLocaleDateString("es-ES", { month: "long" }), sub: String(d.getFullYear()) };
-  if (!hasTime(f)) return { main: d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }), sub: "Hora por confirmar" };
-  return {
-    main: d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }),
-    sub: d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) + " h",
-  };
+  if (!hasDay(f)) return { main: "Sin fecha", sub: "exacta" };
+  const main = d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" });
+  if (!hasTime(f)) return { main, sub: "Hora por confirmar" };
+  return { main, sub: d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) + " h" };
 }
 
 function relative(iso) {
@@ -73,8 +79,9 @@ function relative(iso) {
 
 function cleanCaption(raw) {
   const credit = (raw.match(/[\u{1F4F7}\u{1F4F8}][^@\n]*(@[\w.]+)/u) || [])[1] || null;
+  const handle = (h) => h.slice(1).split(/[_.]/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
   const text = raw
-    .replace(/[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}️‍]/gu, "")
+    .replace(/[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}\u{FE0F}\u{200D}]/gu, "")
     .replace(/#[\p{L}\d_]+/gu, "")
     .replace(/!{2,}/g, "!")
     .replace(/^\s*\d+\s*[°º]\s*-\s*/gm, "")
@@ -82,21 +89,61 @@ function cleanCaption(raw) {
     .replace(/ ([,.!?])/g, "$1");
   const lines = text.split("\n").map((l) => l.trim()).filter((l) => l && !/^\d{1,2}\/\d{1,2}\/\d{2,4}\s*@/.test(l) && !/^@[\w.]+$/.test(l));
   const cut = (s, n) => (s.length > n ? s.slice(0, s.lastIndexOf(" ", n)) + "..." : s);
-  const title = cut(lines[0] || "Financial Brokers", 90);
-  const body = cut(lines.slice(1).join(" "), 220);
+  const title = cut((lines[0] || "Financial Brokers").replace(/@[\w.]+/g, handle), 90);
+  const body = cut(lines.slice(1).join(" ").replace(/@[\w.]+/g, handle), 220);
   return { title, body, credit };
+}
+
+async function getJSON(url) {
+  const res = await fetch(url, { cache: "no-cache" });
+  if (!res.ok) throw new Error(res.status);
+  return res.json();
 }
 
 async function loadFeed() {
   try {
-    const res = await fetch("data/feed.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(res.status);
-    const feed = await res.json();
+    const feed = await getJSON("data/feed.json");
     return { updated: feed.updated, posts: feed.posts.filter((p) => p.image).map((p) => ({ ...p, ...cleanCaption(p.caption || "") })) };
   } catch {
     return { updated: null, posts: [] };
   }
 }
+
+async function loadFixtures() {
+  try {
+    const data = await getJSON("data/fixtures.json");
+    FIXTURES = [...ARCHIVE.filter((f) => f.season !== data.season), ...data.matches];
+    STANDINGS = data.standings || {};
+    TEAM_INFO = data.teams || {};
+    SEASON = data.season;
+    state.season = data.season;
+    document.querySelectorAll(".seasons button").forEach((b, i) => { if (i === 0) { b.dataset.season = data.season; b.textContent = data.season; } });
+  } catch {}
+}
+
+function countdownHTML(f, big = false) {
+  return `<div class="countdown${big ? " countdown--big" : ""}" role="timer" data-at="${toDate(f).toISOString()}"></div>`;
+}
+
+let countdownTimer;
+function tickCountdown() {
+  clearTimeout(countdownTimer);
+  document.querySelectorAll(".countdown").forEach((el) => {
+    const diff = Math.max(0, new Date(el.dataset.at) - new Date());
+    const parts = [[Math.floor(diff / 86400000), "días"], [Math.floor(diff / 3600000) % 24, "horas"], [Math.floor(diff / 60000) % 60, "min"]];
+    el.innerHTML = `<span class="sr-only">Faltan ${parts.map(([n, l]) => `${n} ${l}`).join(", ")}</span>`
+      + parts.map(([n, l]) => `<span aria-hidden="true">${String(n).padStart(2, "0")}<small>${l}</small></span>`).join("");
+  });
+  countdownTimer = setTimeout(tickCountdown, 30000);
+}
+
+const ICONS = {
+  prev: '<path d="M15 6l-6 6l6 6"/>',
+  next: '<path d="M9 6l6 6l-6 6"/>',
+  pause: '<path d="M6 5h4v14h-4z"/><path d="M14 5h4v14h-4z"/>',
+  play: '<path d="M7 4v16l13 -8z"/>',
+};
+const icon = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`;
 
 function initHero(posts) {
   const slidesEl = $("#slides");
@@ -107,26 +154,24 @@ function initHero(posts) {
     slidesEl.append(slide);
   };
 
-  const today = startOfToday();
   ["primera", "segunda"].forEach((team) => {
-    const f = FIXTURES.filter((x) => x.team === team && hasDay(x) && !x.res && toDate(x) >= today).sort((a, b) => toDate(a) - toDate(b))[0];
+    const f = nextFor(team);
     if (!f) return;
     const d = formatDate(f);
     const us = `<div class="vs__side">${crestUs(120)}<b>${US}</b></div>`;
-    const them = `<div class="vs__side">${f.rivalCrest ? `<img class="crest" src="${esc(f.rivalCrest)}" alt="" width="120" height="120">` : crestThem(f)}<b>${esc(f.rival)}</b></div>`;
+    const them = `<div class="vs__side">${crestThem(f, 120)}<b>${esc(f.rival)}</b></div>`;
     add("slide--match", `
       <div class="slide__copy">
         <p class="slide__kicker">Próximo partido, ${esc(TEAMS[f.team])}${f.matchday ? `, jornada ${f.matchday}` : ""}</p>
         <h2 class="slide__title">${esc(d.main)}${hasTime(f) ? `<br><span>${esc(d.sub)}</span>` : ""}</h2>
-        <p class="slide__text">${f.home ? "En casa" : "Fuera"}, ${esc(f.venue || "")}.</p>
-        ${hasTime(f) ? `<div class="countdown countdown--big" data-at="${toDate(f).toISOString()}"></div>` : ""}
+        <p class="slide__text">${f.home ? "En casa" : "Fuera"}${f.venue ? `, ${esc(f.venue)}` : ""}.</p>
+        ${hasTime(f) ? countdownHTML(f, true) : ""}
         <div class="slide__cta"><a class="btn" href="#calendario">Ver calendario</a></div>
       </div>
       <div class="vs">${f.home === false ? them + '<span class="vs__x">vs</span>' + us : us + '<span class="vs__x">vs</span>' + them}</div>`);
   });
 
-  const fresh = posts.filter((p) => p.date && (Date.now() - new Date(p.date)) / 86400000 < 60).slice(0, 2);
-  fresh.forEach((p) => add("slide--post", `
+  posts.filter((p) => p.date && (Date.now() - new Date(p.date)) / 86400000 < STALE_DAYS).slice(0, 2).forEach((p) => add("slide--post", `
       <div class="slide__copy">
         <p class="slide__kicker">Instagram, ${esc(relative(p.date))}</p>
         <h2 class="slide__title">${esc(p.title)}</h2>
@@ -139,163 +184,194 @@ function initHero(posts) {
   const slides = [...slidesEl.children];
   if (slides.length < 2) return;
   const hero = $(".hero");
-  const dots = $("#hero-dots");
-  dots.innerHTML = slides.map((_, i) => `<button class="dot" role="tab" aria-label="Destacado ${i + 1} de ${slides.length}" aria-selected="false"></button>`).join("");
-  $("#hero-controls").hidden = false;
+  const controls = $("#hero-controls");
+  controls.innerHTML = `<div class="hero__dots" aria-label="Destacados">${slides.map((_, i) => `<button class="dot" aria-label="Destacado ${i + 1} de ${slides.length}"></button>`).join("")}</div>
+    <div class="hero__arrows">
+      <button class="arrow" data-play aria-label="Pausar carrusel">${icon("pause")}</button>
+      <button class="arrow arrow--nav" data-dir="-1" aria-label="Destacado anterior">${icon("prev")}</button>
+      <button class="arrow arrow--nav" data-dir="1" aria-label="Destacado siguiente">${icon("next")}</button>
+    </div>`;
+  controls.hidden = false;
   hero.style.setProperty("--slide-ms", SLIDE_MS + "ms");
+  const dots = [...controls.querySelectorAll(".dot")];
+  const playBtn = controls.querySelector("[data-play]");
 
   let current = -1;
   let timer = null;
+  let stopped = reduceMotion;
+  let hovering = false;
+  const running = () => !stopped && !hovering && !document.hidden;
   const show = (i) => {
     current = (i + slides.length) % slides.length;
     slides.forEach((s, k) => { s.classList.toggle("is-active", k === current); s.inert = k !== current; });
-    [...dots.children].forEach((d, k) => d.setAttribute("aria-selected", k === current));
+    dots.forEach((d, k) => (k === current ? d.setAttribute("aria-current", "true") : d.removeAttribute("aria-current")));
     restart();
   };
   const restart = () => {
     clearTimeout(timer);
-    if (reduceMotion || hero.classList.contains("is-paused")) return;
-    const active = dots.children[current];
-    active.style.animation = "none";
+    hero.classList.toggle("is-playing", !stopped);
+    hero.classList.toggle("is-paused", !running());
+    if (!running()) return;
+    const active = dots[current];
+    active.classList.remove("dot--run");
     active.offsetWidth;
-    active.style.animation = "";
+    active.classList.add("dot--run");
     timer = setTimeout(() => show(current + 1), SLIDE_MS);
   };
-  const pause = (on) => {
-    hero.classList.toggle("is-paused", on);
-    if (on) clearTimeout(timer); else restart();
+  const setStopped = (on) => {
+    stopped = on;
+    playBtn.innerHTML = icon(on ? "play" : "pause");
+    playBtn.setAttribute("aria-label", on ? "Reproducir carrusel" : "Pausar carrusel");
+    restart();
   };
 
-  if (!reduceMotion) hero.classList.add("is-playing");
-  dots.addEventListener("click", (e) => { const i = [...dots.children].indexOf(e.target.closest(".dot")); if (i >= 0) show(i); });
-  hero.querySelectorAll(".arrow").forEach((b) => b.addEventListener("click", () => show(current + Number(b.dataset.dir))));
-  hero.addEventListener("mouseenter", () => pause(true));
-  hero.addEventListener("mouseleave", () => pause(false));
-  hero.addEventListener("focusin", () => pause(true));
-  hero.addEventListener("focusout", () => pause(false));
-  document.addEventListener("visibilitychange", () => pause(document.hidden));
+  setStopped(stopped);
+  dots.forEach((d, i) => d.addEventListener("click", () => show(i)));
+  controls.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => show(current + Number(b.dataset.dir))));
+  playBtn.addEventListener("click", () => setStopped(!stopped));
+  $("#slides").addEventListener("mouseenter", () => { hovering = true; restart(); });
+  $("#slides").addEventListener("mouseleave", () => { hovering = false; restart(); });
+  document.addEventListener("visibilitychange", restart);
   show(Math.floor(Math.random() * slides.length));
+}
+
+function matchup(f, cls = "us") {
+  const us = `<span class="${cls}">${US}</span>`;
+  const them = esc(f.rival);
+  if (f.home === null || f.home === undefined) return `${us}<em>ante</em>${them}`;
+  return f.home === false ? `${them}<em>vs</em>${us}` : `${us}<em>vs</em>${them}`;
 }
 
 function matchCard(f, { next = false, label } = {}) {
   const d = formatDate(f);
-  const us = `<div class="mcard__side">${crestUs()}${US}</div>`;
+  const us = `<div class="mcard__side">${crestUs()}<span>${US}</span></div>`;
   const them = `<div class="mcard__side">${crestThem(f)}<span>${esc(f.rival)}</span></div>`;
   const sides = f.home === false ? them + '<span class="mcard__vs">vs</span>' + us : us + '<span class="mcard__vs">vs</span>' + them;
-  const top = `<div class="mcard__top"><span>${esc(label || TEAMS[f.team])}${f.matchday ? `, J${f.matchday}` : ""}</span><span>${d.main}${hasDay(f) ? `, ${d.sub}` : ` ${d.sub}`}</span></div>`;
+  const top = `<div class="mcard__top"><span>${esc(label || TEAMS[f.team])}${f.matchday ? `, J${f.matchday}` : ""}</span><span>${d.main}, ${d.sub}</span></div>`;
+  const where = f.home === true ? "En casa" : f.home === false ? "Fuera" : "";
   let foot;
   if (f.res) foot = `<div class="mcard__res"><span>${esc(f.score || f.note || "Resultado final")}</span><span class="badge badge--${f.res === "W" ? "w" : "l"}">${f.res === "W" ? "Victoria" : "Derrota"}</span></div>`;
-  else if (next && hasTime(f)) foot = `<div class="countdown" data-at="${toDate(f).toISOString()}"></div><div class="mcard__res"><span>${esc(f.venue || "")}</span></div>`;
-  else foot = `<div class="mcard__res"><span>${esc(f.venue || (f.home === false ? "Fuera de casa" : "Pabellón Monte, Santander"))}</span><span>${f.home === true ? "En casa" : f.home === false ? "Fuera" : ""}</span></div>`;
+  else if (next && hasTime(f)) foot = `${countdownHTML(f)}<div class="mcard__res"><span>${esc(f.venue || "")}</span></div>`;
+  else foot = `<div class="mcard__res"><span>${esc(f.venue || "")}</span><span>${where}</span></div>`;
   return `<li class="mcard${next ? " mcard--next" : ""}">${top}<div class="mcard__teams">${sides}</div>${foot}</li>`;
 }
 
 function renderMatches() {
-  const today = startOfToday();
-  const upcoming = FIXTURES.filter((f) => hasDay(f) && !f.res && toDate(f) >= today).sort((a, b) => toDate(a) - toDate(b));
-  const played = FIXTURES.filter((f) => f.res).sort((a, b) => toDate(b) - toDate(a));
-  const cards = [];
-
-  played.slice(0, 3).reverse().forEach((f) => cards.push(matchCard(f)));
+  const season = SEASON || state.season;
+  const upcoming = FIXTURES.filter(isUpcoming).sort(byDate);
+  const played = FIXTURES.filter((f) => f.res && f.season === season).sort(byDate);
+  const cards = played.slice(-4).map((f) => matchCard(f));
   if (upcoming.length) {
     upcoming.slice(0, 8).forEach((f, i) => cards.push(matchCard(f, { next: i === 0, label: i === 0 ? `Próximo, ${TEAMS[f.team]}` : null })));
   } else {
     cards.push(`<li class="mcard mcard--next">
       <div class="mcard__top"><span>Próxima temporada</span><span>Pretemporada</span></div>
-      <div class="mcard__teams"><div class="mcard__side">${crestUs()}${US}</div><span class="mcard__vs">vs</span><div class="mcard__side"><span class="crest crest--txt">?</span>Por confirmar</div></div>
+      <div class="mcard__teams"><div class="mcard__side">${crestUs()}<span>${US}</span></div><span class="mcard__vs">vs</span><div class="mcard__side"><span class="crest crest--txt">?</span><span>Por confirmar</span></div></div>
       <div class="mcard__res"><span>Calendario pendiente de la federación</span></div>
     </li>`);
   }
-  if (!upcoming.length || played.length > 3) played.slice(3, 9).forEach((f) => cards.push(matchCard(f)));
-
-  $("#matches").innerHTML = cards.join("");
-  const nextCard = $("#matches .mcard--next");
-  if (nextCard && played.length) requestAnimationFrame(() => { const row = $("#matches"); row.scrollLeft += nextCard.getBoundingClientRect().left - row.getBoundingClientRect().left; });
+  const row = $("#matches");
+  row.innerHTML = cards.join("");
+  const nextCard = row.querySelector(".mcard--next");
+  if (nextCard && played.length) requestAnimationFrame(() => { row.scrollLeft += nextCard.getBoundingClientRect().left - row.getBoundingClientRect().left; });
   tickCountdown();
-}
-
-let countdownTimer;
-function tickCountdown() {
-  clearTimeout(countdownTimer);
-  document.querySelectorAll(".countdown").forEach((el) => {
-    const diff = Math.max(0, new Date(el.dataset.at) - new Date());
-    const parts = [[Math.floor(diff / 86400000), "días"], [Math.floor(diff / 3600000) % 24, "horas"], [Math.floor(diff / 60000) % 60, "min"]];
-    el.setAttribute("aria-label", `Faltan ${parts.map(([n, l]) => `${n} ${l}`).join(", ")}`);
-    el.innerHTML = parts.map(([n, l]) => `<span aria-hidden="true">${String(n).padStart(2, "0")}<small>${l}</small></span>`).join("");
-  });
-  countdownTimer = setTimeout(tickCountdown, 30000);
 }
 
 function renderNews(feed) {
   const box = $("#news");
-  if (!feed.posts.length) {
-    box.innerHTML = `<p class="news__empty">Las últimas publicaciones del club aparecerán aquí. Mientras tanto, síguelas en <a class="link" href="https://www.instagram.com/financialbbasket/" target="_blank" rel="noopener">Instagram</a>.</p>`;
+  const posts = feed.posts.filter((p) => !(/calendario/i.test(p.title) && (Date.now() - new Date(p.date)) / 86400000 > 45)).slice(0, 8);
+  const latest = feed.posts[0];
+  const fresh = latest && (Date.now() - new Date(latest.date)) / 86400000 < STALE_DAYS;
+  $("#actualidad h2").textContent = fresh ? "Actualidad" : "Desde Instagram";
+  $("#feed-updated").textContent = latest ? `Última publicación ${relative(latest.date)}` : "";
+  if (!posts.length) {
+    box.innerHTML = `<p class="news__empty">Las publicaciones del club aparecerán aquí. Mientras tanto, síguelas en <a class="link" href="https://www.instagram.com/financialbbasket/" target="_blank" rel="noopener">Instagram</a>.</p>`;
     return;
   }
-  const posts = feed.posts.slice(0, 5);
-  box.innerHTML = posts.map((p, i) => `<a class="news__card${i === 0 ? " news__card--lead" : ""} reveal" href="https://www.instagram.com/p/${esc(p.code)}/" target="_blank" rel="noopener">
-      <img src="${esc(p.image)}" alt="" loading="lazy">
-      <span class="news__body">
-        <span class="news__date">${esc(relative(p.date))}${p.credit ? `. Foto: ${esc(p.credit)}` : ""}</span>
-        <span class="news__title">${esc(p.title)}</span>
-        ${p.body ? `<span class="news__text">${esc(p.body)}</span>` : ""}
+  box.innerHTML = posts.map((p) => `<a class="post" href="https://www.instagram.com/p/${esc(p.code)}/" target="_blank" rel="noopener">
+      <span class="post__media"><img src="${esc(p.image)}" alt="" loading="lazy"></span>
+      <span class="post__body">
+        <span class="post__date">${esc(relative(p.date))}${p.credit ? `. Foto: ${esc(p.credit)}` : ""}</span>
+        <span class="post__title">${esc(p.title)}</span>
+        ${p.body ? `<span class="post__text">${esc(p.body)}</span>` : ""}
       </span>
     </a>`).join("");
-  if (posts.length < 5) box.style.gridTemplateColumns = `repeat(${Math.max(posts.length, 1) + (posts.length > 1 ? 1 : 0)}, 1fr)`;
-  if (feed.updated) $("#feed-updated").textContent = `Actualizado ${relative(feed.updated)} desde Instagram`;
-}
-
-function matchup(f) {
-  const us = `<span class="us">${US}</span>`;
-  const them = esc(f.rival);
-  return f.home === false ? `${them}<em>vs</em>${us}` : `${us}<em>vs</em>${them}`;
 }
 
 function result(f) {
   if (f.res === "W") return `<span class="fx__res fx__res--w">Victoria${f.score ? " " + esc(f.score) : ""}</span>`;
   if (f.res === "L") return `<span class="fx__res fx__res--l">Derrota${f.score ? " " + esc(f.score) : ""}</span>`;
-  const past = toDate(f) < new Date();
-  return `<span class="fx__res fx__res--p">${past ? "Disputado" : f.home === true ? "En casa" : f.home === false ? "Fuera" : "Próximo"}</span>`;
+  const past = toDate(f) < startOfToday();
+  return `<span class="fx__res fx__res--p">${past ? "Disputado" : f.home === true ? "En casa" : f.home === false ? "Fuera" : "Pendiente"}</span>`;
 }
 
 function renderFixtures() {
   const list = FIXTURES
     .filter((f) => f.season === state.season && (state.team === "all" || f.team === state.team))
-    .sort((a, b) => toDate(a) - toDate(b));
+    .sort(byDate);
 
   $("#season-label").textContent = state.season;
+  renderStandings();
 
   if (!list.length) {
     $("#fixtures").innerHTML = `<li class="fx fx--empty"><div>
       <h3>Calendario ${esc(state.season)} en camino</h3>
       <p>La Federación Cántabra aún no ha publicado los emparejamientos. En cuanto salgan, los verás aquí con fecha, hora y pabellón.</p>
-      <button class="btn btn--ghost btn--sm" data-go="2025/26">Ver temporada 2025/26</button>
     </div></li>`;
-    $("#fixtures [data-go]").addEventListener("click", (e) => setSeason(e.currentTarget.dataset.go));
     return;
   }
 
-  const today = startOfToday();
-  const firstUpcoming = list.findIndex((f) => !f.res && hasDay(f) && toDate(f) >= today);
+  const firstUpcoming = list.findIndex(isUpcoming);
   const from = firstUpcoming > 2 ? firstUpcoming - 2 : 0;
   const visible = state.expanded || list.length <= 12 ? list : list.slice(from, from + 10);
   let month = "";
   const rows = visible.map((f, i) => {
     const d = formatDate(f);
-    const where = f.venue ? `, en ${esc(f.venue)}` : f.home === true ? ", en Pabellón Monte" : "";
-    const note = f.note ? `. ${esc(f.note)}` : "";
-    const m = toDate(f).toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+    const m = hasDay(f) || f.date.length === 7 ? toDate(f).toLocaleDateString("es-ES", { month: "long", year: "numeric" }) : "";
     const header = m !== month ? `<li class="fx-month">${esc(m)}</li>` : "";
     month = m;
-    return `${header}<li class="fx" style="animation-delay:${Math.min(i, 10) * 30}ms">
+    const delay = `style="animation-delay:${Math.min(i, 10) * 30}ms"`;
+    if (f.rest) {
+      return `${header}<li class="fx fx--rest" ${delay}>
+        <div class="fx__date">${esc(toDate(f).toLocaleDateString("es-ES", { day: "numeric", month: "short" }))}<small>Fin de semana</small></div>
+        <div><div class="fx__teams"><span class="us">${US}</span><em>descansa</em></div><span class="fx__comp">${TEAMS[f.team]}, jornada ${f.matchday}</span></div>
+        <span class="fx__res fx__res--p">Descanso</span>
+      </li>`;
+    }
+    const where = f.venue ? `, en ${esc(f.venue)}` : "";
+    const note = f.note ? `. ${esc(f.note)}` : "";
+    return `${header}<li class="fx" ${delay}>
       <div class="fx__date">${d.main}<small>${d.sub}</small></div>
       <div><div class="fx__teams">${matchup(f)}</div><span class="fx__comp">${TEAMS[f.team]}${f.matchday ? `, jornada ${f.matchday}` : ""}${where}${note}</span></div>
       ${result(f)}
     </li>`;
   });
-  if (visible.length < list.length) rows.push(`<li class="fx-more"><button class="btn btn--ghost" data-expand>Ver temporada completa (${list.length} partidos)</button></li>`);
+  if (visible.length < list.length) rows.push(`<li class="fx-more"><button class="btn btn--ghost" data-expand>Ver temporada completa (${list.filter((f) => !f.rest).length} partidos)</button></li>`);
   $("#fixtures").innerHTML = rows.join("");
   $("#fixtures [data-expand]")?.addEventListener("click", () => { state.expanded = true; renderFixtures(); });
+}
+
+function renderStandings() {
+  const box = $("#standings");
+  const keys = (state.team === "all" ? ["primera", "segunda"] : [state.team]).filter((k) => STANDINGS[k]?.length);
+  const show = state.season === SEASON && keys.length;
+  box.hidden = !show;
+  box.parentElement.classList.toggle("season--full", !show);
+  if (!show) return;
+  box.innerHTML = keys.map((k) => {
+    const rows = STANDINGS[k];
+    const played = Math.max(...rows.map((r) => r.pj));
+    return `<div class="standing"><div class="standing__head"><h3>${esc(TEAMS[k])}</h3><span>${played ? `Tras ${played} ${played === 1 ? "partido" : "partidos"}` : "Antes de la jornada 1"}</span></div>
+    <table class="table">
+      <caption class="sr-only">Clasificación de ${esc(TEAMS[k])}</caption>
+      <thead><tr><th scope="col"><span class="sr-only">Posición</span></th><th scope="col">Equipo</th><th scope="col" title="Partidos jugados">PJ</th><th scope="col" title="Ganados">G</th><th scope="col" title="Perdidos">P</th><th scope="col" title="Puntos">Pts</th></tr></thead>
+      <tbody>${rows.map((r, i) => `<tr${r.us ? ' class="is-us"' : ""}>
+        <td>${played ? i + 1 : "-"}</td>
+        <th scope="row"><span class="table__team">${r.crest ? `<img src="${esc(r.crest)}" alt="" width="24" height="24" loading="lazy">` : ""}${esc(r.name)}</span></th>
+        <td>${r.pj}</td><td>${r.g}</td><td>${r.p}</td><td><b>${r.pts}</b></td>
+      </tr>`).join("")}</tbody>
+    </table></div>`;
+  }).join("");
 }
 
 function setSeason(season) {
@@ -307,56 +383,49 @@ function setSeason(season) {
 
 function renderForm() {
   document.querySelectorAll("[data-form]").forEach((box) => {
-    const team = FIXTURES.filter((f) => f.team === box.dataset.form && f.res);
-    if (!team.length) return;
-    const season = team.map((f) => f.season).sort().at(-1);
-    const played = team.filter((f) => f.season === season).sort((a, b) => toDate(a) - toDate(b)).slice(-5);
+    const team = box.dataset.form;
+    const current = FIXTURES.filter((f) => f.team === team && f.res && f.season === SEASON).sort(byDate);
+    const archive = FIXTURES.filter((f) => f.team === team && f.res && f.season === "2025/26").sort(byDate);
+    const played = (current.length ? current : archive).slice(-5);
+    if (!played.length) { box.innerHTML = ""; return; }
+    const when = current.length ? `Últimos resultados, ${SEASON}` : "Noviembre de la temporada pasada (2025/26)";
     const label = played.map((f) => `${f.res === "W" ? "victoria" : "derrota"} ante ${f.rival}`).join(", ");
-    const when = season === "2025/26" ? "noviembre 25/26" : season;
-    box.innerHTML = `<span class="form__label">Últimos resultados, ${esc(when)}</span>
+    box.innerHTML = `<span class="form__label">${esc(when)}</span>
       <ol class="form__row" aria-label="${esc(label)}">${played.map((f) =>
         `<li class="form__cell form__cell--${f.res === "W" ? "w" : "l"}" title="${esc(f.rival)}">${f.res === "W" ? "V" : "D"}</li>`).join("")}</ol>`;
   });
 }
 
-function renderTeamNext() {
-  const today = startOfToday();
+function renderTeamInfo() {
   document.querySelectorAll("[data-next]").forEach((dd) => {
-    const next = FIXTURES.filter((f) => f.team === dd.dataset.next && hasDay(f) && !f.res && toDate(f) >= today).sort((a, b) => toDate(a) - toDate(b))[0];
-    if (!next) return;
-    const d = formatDate(next);
-    dd.textContent = `${d.main}, ${next.home === false ? "en casa de" : "vs"} ${next.rival}`;
-    dd.title = `${next.home === false ? next.rival + " vs Brokers" : "Brokers vs " + next.rival}, ${d.sub}`;
+    const f = nextFor(dd.dataset.next);
+    if (!f) return;
+    const d = formatDate(f);
+    dd.textContent = `${d.main}, ${f.home ? "en casa ante" : "fuera ante"} ${f.rival}`;
+  });
+  document.querySelectorAll("[data-venue]").forEach((dd) => {
+    const venues = TEAM_INFO[dd.dataset.venue]?.venues;
+    if (venues?.length) dd.textContent = `Pabellón ${venues.join(" y ")}`;
   });
 }
 
-async function loadFixtures() {
-  try {
-    const res = await fetch("data/fixtures.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    FIXTURES = [...ARCHIVE.filter((f) => f.season !== data.season), ...data.matches];
-    state.season = data.season;
-    document.querySelector('.seasons [data-season="2026/27"]')?.setAttribute("data-season", data.season);
-    document.querySelectorAll(".seasons button").forEach((b) => { if (b.dataset.season === data.season) b.textContent = data.season; });
-  } catch {}
-}
-
 function renderMedia() {
-  const featured = [...VIDEOS];
-  const wide = featured.filter((v) => !v.tall);
-  const lead = Math.floor(Math.random() * wide.length);
-  wide.unshift(...wide.splice(lead, 1));
+  const wide = VIDEOS.filter((v) => !v.tall);
+  wide.unshift(...wide.splice(Math.floor(Math.random() * wide.length), 1));
   const clip = (v) => `<figure class="clip${v.tall ? " clip--tall" : ""}">
       <div class="clip__frame" data-video="${v.id}"></div>
       <figcaption><b>${esc(v.title)}</b><span>${esc(v.sub)}</span></figcaption>
     </figure>`;
-  $("#media").innerHTML = `<div class="media__stack">${wide.map(clip).join("")}</div>${featured.filter((v) => v.tall).map(clip).join("")}`;
+  $("#media").innerHTML = `<div class="media__stack">${wide.map(clip).join("")}</div>${VIDEOS.filter((v) => v.tall).map(clip).join("")}`;
 
-  document.querySelectorAll("[data-video]").forEach((box) => {
+  const mount = (box) => {
     const href = encodeURIComponent(`https://www.facebook.com/financialbbasket/videos/${box.dataset.video}/`);
-    box.innerHTML = `<iframe src="https://www.facebook.com/plugins/video.php?href=${href}&show_text=false&width=${Math.round(box.clientWidth)}" loading="lazy" title="Vídeo de Financial Brokers en Facebook" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
-  });
+    box.innerHTML = `<iframe src="https://www.facebook.com/plugins/video.php?href=${href}&show_text=false&width=${Math.round(box.clientWidth)}" title="Vídeo de Financial Brokers en Facebook" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  };
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { mount(e.target); io.unobserve(e.target); }
+  }), { rootMargin: "300px 0px" });
+  document.querySelectorAll("[data-video]").forEach((box) => io.observe(box));
 }
 
 document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
@@ -365,16 +434,21 @@ document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("cli
   renderFixtures();
 }));
 document.querySelectorAll(".seasons button").forEach((b) => b.addEventListener("click", () => setSeason(b.dataset.season)));
+document.querySelectorAll("[data-strip]").forEach((b) => b.addEventListener("click", () => {
+  const row = $("#matches");
+  const card = row.querySelector(".mcard");
+  row.scrollBy({ left: Number(b.dataset.strip) * (card ? card.offsetWidth + 12 : 260) * 2, behavior: reduceMotion ? "auto" : "smooth" });
+}));
 
 const toggle = $(".nav__toggle");
 const menu = $("#menu");
+const closeMenu = () => { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); };
 toggle.addEventListener("click", () => {
   const open = menu.classList.toggle("open");
   toggle.setAttribute("aria-expanded", open);
 });
-menu.addEventListener("click", (e) => {
-  if (e.target.closest("a")) { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
-});
+menu.addEventListener("click", (e) => { if (e.target.closest("a")) closeMenu(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.classList.contains("open")) { closeMenu(); toggle.focus(); } });
 
 $("#year").textContent = new Date().getFullYear();
 renderMedia();
@@ -382,7 +456,7 @@ Promise.all([loadFixtures(), loadFeed()]).then(([, feed]) => {
   setSeason(state.season);
   renderMatches();
   renderForm();
-  renderTeamNext();
+  renderTeamInfo();
   renderNews(feed);
   initHero(feed.posts);
 });
