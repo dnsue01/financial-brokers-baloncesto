@@ -33,6 +33,7 @@
       <a href="#actualidad">Actualidad</a>
       <a href="#equipos">Equipos</a>
       <a href="#videos">Vídeos</a>
+      <a href="#fotos" data-gallery-link hidden>Fotos</a>
       <a href="#club">Club</a>
       <a href="#contacto" class="btn btn--sm">Escríbenos</a>
     </nav>
@@ -95,6 +96,21 @@
     </div>
   </section>
 
+  <dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer__bar">
+      <button class="arrow arrow--sm viewer__back" data-viewer="back" aria-label="Volver al álbum" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg></button>
+      <div class="viewer__title"><h3 id="viewer-title"></h3><p id="viewer-sub"></p></div>
+      <button class="viewer__close" data-viewer="close" aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6l-12 12"/></svg></button>
+    </div>
+    <div class="viewer__grid" id="viewer-grid"></div>
+    <figure class="viewer__photo" id="viewer-photo" hidden>
+      <img alt="" id="viewer-img">
+      <button class="arrow viewer__nav" data-step="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg></button>
+      <button class="arrow viewer__nav" data-step="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>
+      <figcaption><span id="viewer-count"></span><a class="link" id="viewer-dl" download>Descargar</a></figcaption>
+    </figure>
+  </dialog>
+
   <section class="section section--ink" id="equipos">
     <div class="wrap">
       <h2 class="reveal">Nuestros equipos</h2>
@@ -130,6 +146,16 @@
         <a class="btn btn--dark" href="https://www.facebook.com/financialbbasket/videos/" target="_blank" rel="noopener">Más en Facebook</a>
       </div>
       <div class="media" id="media"></div>
+    </div>
+  </section>
+
+  <section class="section section--ink" id="fotos" hidden>
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Fotos</h2>
+        <p class="head__meta" id="gallery-meta"></p>
+      </div>
+      <div class="albums" id="albums"></div>
     </div>
   </section>
 
@@ -216,7 +242,7 @@
       <li><a href="mailto:financial.brokers.aseguradores@gmail.com">Email</a></li>
     </ul>
     <p>Pabellón Monte, Santander. © <span id="year"></span> C.D.E. Financial Brokers Aseguradores</p>
-    <p class="footer__credit">Fotos de Unsplash: Davide Aracri, Markus Spiske, Patrick Fore y Kiona. Fotos de partido: publicaciones del club en Instagram.</p>
+    <p class="footer__credit">Fotos de Unsplash: Davide Aracri, Markus Spiske, Patrick Fore y Kiona. Fotos de partido: publicaciones del club en Instagram y galería del club.</p>
   </div>
 </footer>
 

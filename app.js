@@ -41,6 +41,7 @@ let FIXTURES = [...ARCHIVE];
 let STANDINGS = {};
 let TEAM_INFO = {};
 let SEASON = null;
+let ALBUMS = [];
 const state = { team: "all", season: "2025/26", expanded: false };
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -107,6 +108,13 @@ async function loadFeed() {
   } catch {
     return { updated: null, posts: [] };
   }
+}
+
+async function loadGallery() {
+  try {
+    const data = await getJSON("data/gallery.json");
+    ALBUMS = (data.albums || []).filter((a) => a.photos?.length);
+  } catch {}
 }
 
 async function loadFixtures() {
@@ -211,7 +219,7 @@ function initHero(posts) {
     clearTimeout(timer);
     hero.classList.toggle("is-playing", !stopped);
     hero.classList.toggle("is-paused", !running());
-    if (!running()) return;
+    if (!running() || current < 0) return;
     const active = dots[current];
     active.classList.remove("dot--run");
     active.offsetWidth;
@@ -342,7 +350,7 @@ function renderFixtures() {
     const note = f.note ? `. ${esc(f.note)}` : "";
     return `${header}<li class="fx" ${delay}>
       <div class="fx__date">${d.main}<small>${d.sub}</small></div>
-      <div><div class="fx__teams">${matchup(f)}</div><span class="fx__comp">${TEAMS[f.team]}${f.matchday ? `, jornada ${f.matchday}` : ""}${where}${note}</span></div>
+      <div><div class="fx__teams">${matchup(f)}</div><span class="fx__comp">${TEAMS[f.team]}${f.matchday ? `, jornada ${f.matchday}` : ""}${where}${note}</span>${photosLink(f)}</div>
       ${result(f)}
     </li>`;
   });
@@ -428,6 +436,144 @@ function renderMedia() {
   document.querySelectorAll("[data-video]").forEach((box) => io.observe(box));
 }
 
+const norm = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const words = (s) => norm(s).split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !["baloncesto", "basket", "club"].includes(w));
+
+function fixtureFor(album) {
+  const same = FIXTURES.filter((f) => !f.rest && hasDay(f) && f.date.slice(0, 10) === album.date);
+  if (same.length < 2) return same[0];
+  const title = norm(album.title);
+  return same.find((f) => words(f.rival).some((w) => title.includes(w))) || same[0];
+}
+
+function albumFor(f) {
+  if (f.rest || !hasDay(f)) return null;
+  return ALBUMS.find((a) => fixtureFor(a) === f);
+}
+
+const photosLink = (f) => {
+  const a = albumFor(f);
+  return a ? `<a class="fx__photos" href="#fotos/${esc(a.slug)}">${a.photos.length} ${a.photos.length === 1 ? "foto" : "fotos"}</a>` : "";
+};
+
+function albumLabel(a) {
+  const f = fixtureFor(a);
+  const day = new Date(a.date + "T00:00").toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+  const title = a.title || (f ? `${f.home === false ? f.rival + " - " + US : US + " - " + f.rival}` : `Fotos del ${day}`);
+  const res = f?.res ? `${f.res === "W" ? "Victoria" : "Derrota"}${f.score ? " " + f.score : ""}` : "";
+  return { f, title, day, res, team: f ? TEAMS[f.team] : "" };
+}
+
+function renderGallery(expanded = false) {
+  const section = $("#fotos");
+  section.hidden = !ALBUMS.length;
+  document.querySelectorAll("[data-gallery-link]").forEach((a) => { a.hidden = !ALBUMS.length; });
+  if (!ALBUMS.length) return;
+  const total = ALBUMS.reduce((n, a) => n + a.photos.length, 0);
+  $("#gallery-meta").textContent = `${ALBUMS.length} ${ALBUMS.length === 1 ? "álbum" : "álbumes"}, ${total} fotos`;
+  const visible = expanded ? ALBUMS : ALBUMS.slice(0, 6);
+  const cards = visible.map((a) => {
+    const l = albumLabel(a);
+    const cover = a.photos.find((p) => p.id === a.cover) || a.photos[0];
+    return `<a class="album" href="#fotos/${esc(a.slug)}">
+      <span class="album__media"><img src="${esc(cover.thumb)}" alt="" loading="lazy" width="${cover.w}" height="${cover.h}"></span>
+      <span class="album__body">
+        <span class="album__meta">${esc(l.day)}${l.team ? ` · ${esc(l.team)}` : ""}</span>
+        <span class="album__title">${esc(l.title)}</span>
+        <span class="album__foot"><span>${a.photos.length} ${a.photos.length === 1 ? "foto" : "fotos"}</span>${l.res ? `<em class="album__res${l.f.res === "W" ? " album__res--w" : ""}">${esc(l.res)}</em>` : ""}</span>
+      </span>
+    </a>`;
+  });
+  if (visible.length < ALBUMS.length) cards.push(`<div class="albums__more"><button class="btn btn--ghost" data-albums-all>Ver todos los álbumes (${ALBUMS.length})</button></div>`);
+  $("#albums").innerHTML = cards.join("");
+  $("#albums [data-albums-all]")?.addEventListener("click", () => renderGallery(true));
+}
+
+const viewer = {
+  el: $("#viewer"), album: null, index: -1,
+  open(album) {
+    this.album = album;
+    const l = albumLabel(album);
+    $("#viewer-title").textContent = l.title;
+    $("#viewer-sub").textContent = [l.day, l.team, l.res].filter(Boolean).join(" · ") + ` · ${album.photos.length} ${album.photos.length === 1 ? "foto" : "fotos"}`;
+    $("#viewer-grid").innerHTML = album.photos.map((p, i) => `<button class="shot" data-shot="${i}" aria-label="Ver foto ${i + 1} de ${album.photos.length}">
+        <img src="${esc(p.thumb)}" alt="" loading="lazy" width="${p.w}" height="${p.h}">
+      </button>`).join("");
+    this.grid();
+    if (!this.el.open) this.el.showModal();
+    this.el.scrollTop = 0;
+    $("#viewer-grid").scrollTop = 0;
+  },
+  grid() {
+    const from = this.index;
+    this.index = -1;
+    $("#viewer-photo").hidden = true;
+    $("#viewer-grid").hidden = false;
+    this.el.querySelector(".viewer__back").hidden = true;
+    const last = from >= 0 && $(`#viewer-grid [data-shot="${from}"]`);
+    if (last) { last.scrollIntoView({ block: "center" }); last.focus(); }
+  },
+  show(i) {
+    const photos = this.album.photos;
+    this.index = (i + photos.length) % photos.length;
+    const p = photos[this.index];
+    const img = $("#viewer-img");
+    img.src = p.full;
+    img.width = p.w;
+    img.height = p.h;
+    img.alt = `Foto ${this.index + 1} de ${photos.length}, ${albumLabel(this.album).title}`;
+    $("#viewer-count").textContent = `${this.index + 1} / ${photos.length}`;
+    $("#viewer-dl").href = p.full;
+    $("#viewer-dl").setAttribute("download", `financial-brokers-${this.album.slug}-${this.index + 1}.webp`);
+    $("#viewer-grid").hidden = true;
+    $("#viewer-photo").hidden = false;
+    this.el.querySelector(".viewer__back").hidden = false;
+    if (!this.el.contains(document.activeElement) || document.activeElement.closest("[hidden]")) this.el.querySelector(".viewer__nav[data-step='1']").focus({ preventScroll: true });
+    [1, -1].forEach((d) => { const n = photos[(this.index + d + photos.length) % photos.length]; if (n) new Image().src = n.full; });
+  },
+  close() {
+    if (this.el.open) this.el.close();
+  },
+};
+
+viewer.el.addEventListener("close", () => {
+  viewer.index = -1;
+  if (location.hash.startsWith("#fotos/")) history.replaceState(null, "", "#fotos");
+});
+viewer.el.addEventListener("cancel", (e) => {
+  if (viewer.index >= 0) { e.preventDefault(); viewer.grid(); }
+});
+viewer.el.addEventListener("click", (e) => {
+  const shot = e.target.closest("[data-shot]");
+  if (shot) return viewer.show(Number(shot.dataset.shot));
+  const step = e.target.closest("[data-step]");
+  if (step) return viewer.show(viewer.index + Number(step.dataset.step));
+  const action = e.target.closest("[data-viewer]")?.dataset.viewer;
+  if (action === "close") viewer.close();
+  if (action === "back") viewer.grid();
+});
+document.addEventListener("keydown", (e) => {
+  if (!viewer.el.open || viewer.index < 0) return;
+  if (e.key === "ArrowRight") viewer.show(viewer.index + 1);
+  if (e.key === "ArrowLeft") viewer.show(viewer.index - 1);
+});
+let touchX = null;
+$("#viewer-photo").addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") touchX = e.clientX; });
+$("#viewer-photo").addEventListener("pointerup", (e) => {
+  if (touchX === null) return;
+  const dx = e.clientX - touchX;
+  touchX = null;
+  if (Math.abs(dx) > 50) viewer.show(viewer.index + (dx < 0 ? 1 : -1));
+});
+
+function routeGallery() {
+  const slug = decodeURIComponent(location.hash.match(/^#fotos\/(.+)$/)?.[1] || "");
+  const album = slug && ALBUMS.find((a) => a.slug === slug);
+  if (album) viewer.open(album);
+  else if (viewer.el.open) viewer.close();
+}
+addEventListener("hashchange", routeGallery);
+
 document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
   document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", x === b));
   state.team = b.dataset.team;
@@ -452,8 +598,11 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.cla
 
 $("#year").textContent = new Date().getFullYear();
 renderMedia();
-Promise.all([loadFixtures(), loadFeed()]).then(([, feed]) => {
+Promise.all([loadFixtures(), loadFeed(), loadGallery()]).then(([, feed]) => {
   setSeason(state.season);
+  renderGallery();
+  routeGallery();
+  if (location.hash === "#fotos" && ALBUMS.length) $("#fotos").scrollIntoView();
   renderMatches();
   renderForm();
   renderTeamInfo();
