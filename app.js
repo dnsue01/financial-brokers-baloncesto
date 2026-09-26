@@ -136,13 +136,14 @@ function countdownHTML(f, big = false) {
 let countdownTimer;
 function tickCountdown() {
   clearTimeout(countdownTimer);
+  const now = Date.now();
   document.querySelectorAll(".countdown").forEach((el) => {
-    const diff = Math.max(0, new Date(el.dataset.at) - new Date());
-    const parts = [[Math.floor(diff / 86400000), "días"], [Math.floor(diff / 3600000) % 24, "horas"], [Math.floor(diff / 60000) % 60, "min"]];
+    const diff = Math.max(0, new Date(el.dataset.at) - now);
+    const parts = [[Math.floor(diff / 3600000), "horas"], [Math.floor(diff / 60000) % 60, "min"], [Math.floor(diff / 1000) % 60, "seg"]];
     el.innerHTML = `<span class="sr-only">Faltan ${parts.map(([n, l]) => `${n} ${l}`).join(", ")}</span>`
       + parts.map(([n, l]) => `<span aria-hidden="true">${String(n).padStart(2, "0")}<small>${l}</small></span>`).join("");
   });
-  countdownTimer = setTimeout(tickCountdown, 30000);
+  countdownTimer = setTimeout(tickCountdown, 1000);
 }
 
 const ICONS = {
