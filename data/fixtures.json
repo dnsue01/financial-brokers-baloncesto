@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25T13:26:39.779Z",
+  "updated": "2026-09-30T12:45:23.952Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -346,7 +346,7 @@
       "rival": "La Paz Torrelavega",
       "rivalFull": "LA PAZ TVGA",
       "rivalCrest": "data/crests/189.jpg",
-      "venue": "Pabellón Numancia, Santander",
+      "venue": "Pabellón Monte, Santander",
       "res": null,
       "score": null
     },
@@ -406,7 +406,7 @@
       "rival": "King's Santander U22",
       "rivalFull": "KING’S SANTANDER U22",
       "rivalCrest": "data/crests/139.jpg",
-      "venue": "Pabellón Numancia, Santander",
+      "venue": "Pabellón Monte, Santander",
       "res": null,
       "score": null
     },
