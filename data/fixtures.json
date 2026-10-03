@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03T16:30:36.887Z",
+  "updated": "2026-10-03T21:25:27.213Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,28 +27,54 @@
   "standings": {
     "segunda": [
       {
+        "team": "5003",
+        "name": "King's Santander U22",
+        "club": "139",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 88,
+        "pc": 67,
+        "pts": 2,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
         "team": "4874",
         "name": "Castrobasket",
         "club": "212",
-        "pj": 0,
-        "g": 0,
+        "pj": 1,
+        "g": 1,
         "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
+        "pf": 73,
+        "pc": 58,
+        "pts": 2,
         "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
+        "team": "5021",
+        "name": "Ribamontán al Mar",
+        "club": "125",
+        "pj": 1,
+        "g": 0,
+        "p": 1,
+        "pf": 58,
+        "pc": 73,
+        "pts": 1,
+        "crest": "data/crests/125.jpg",
         "us": false
       },
       {
         "team": "4938",
         "name": "CB Corrales",
         "club": "128",
-        "pj": 0,
+        "pj": 1,
         "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
+        "p": 1,
+        "pf": 67,
+        "pc": 88,
+        "pts": 1,
         "crest": "data/crests/128.jpg",
         "us": false
       },
@@ -79,19 +105,6 @@
         "us": true
       },
       {
-        "team": "5003",
-        "name": "King's Santander U22",
-        "club": "139",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -102,19 +115,6 @@
         "pc": 0,
         "pts": 0,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "5021",
-        "name": "Ribamontán al Mar",
-        "club": "125",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/125.jpg",
         "us": false
       },
       {
@@ -146,6 +146,58 @@
         "us": false
       },
       {
+        "team": "5004",
+        "name": "Daygon",
+        "club": "139",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 82,
+        "pc": 66,
+        "pts": 2,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "4903",
+        "name": "CB Solares",
+        "club": "182",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 71,
+        "pc": 69,
+        "pts": 2,
+        "crest": "data/crests/182.jpg",
+        "us": false
+      },
+      {
+        "team": "4827",
+        "name": "Bezana",
+        "club": "190",
+        "pj": 1,
+        "g": 0,
+        "p": 1,
+        "pf": 69,
+        "pc": 71,
+        "pts": 1,
+        "crest": "data/crests/190.jpg",
+        "us": false
+      },
+      {
+        "team": "4747",
+        "name": "Astillero",
+        "club": "172",
+        "pj": 1,
+        "g": 0,
+        "p": 1,
+        "pf": 66,
+        "pc": 82,
+        "pts": 1,
+        "crest": "data/crests/172.png",
+        "us": false
+      },
+      {
         "team": "4829",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -156,32 +208,6 @@
         "pc": 103,
         "pts": 1,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "4747",
-        "name": "Astillero",
-        "club": "172",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/172.png",
-        "us": false
-      },
-      {
-        "team": "4827",
-        "name": "Bezana",
-        "club": "190",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/190.jpg",
         "us": false
       },
       {
@@ -211,19 +237,6 @@
         "us": false
       },
       {
-        "team": "4903",
-        "name": "CB Solares",
-        "club": "182",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/182.jpg",
-        "us": false
-      },
-      {
         "team": "5002",
         "name": "Colindres",
         "club": "187",
@@ -234,19 +247,6 @@
         "pc": 0,
         "pts": 0,
         "crest": "data/crests/187.jpg",
-        "us": false
-      },
-      {
-        "team": "5004",
-        "name": "Daygon",
-        "club": "139",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/139.jpg",
         "us": false
       },
       {
