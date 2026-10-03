@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30T12:45:23.952Z",
+  "updated": "2026-10-03T16:30:36.887Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -133,6 +133,32 @@
     ],
     "primera": [
       {
+        "team": "4861",
+        "name": "CBT Torrelavega",
+        "club": "110",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 103,
+        "pc": 51,
+        "pts": 2,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
+        "team": "4829",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 1,
+        "g": 0,
+        "p": 1,
+        "pf": 51,
+        "pc": 103,
+        "pts": 1,
+        "crest": "data/crests/189.jpg",
+        "us": false
+      },
+      {
         "team": "4747",
         "name": "Astillero",
         "club": "172",
@@ -198,19 +224,6 @@
         "us": false
       },
       {
-        "team": "4861",
-        "name": "CBT Torrelavega",
-        "club": "110",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/110.png",
-        "us": false
-      },
-      {
         "team": "5002",
         "name": "Colindres",
         "club": "187",
@@ -248,19 +261,6 @@
         "pts": 0,
         "crest": "data/crests/203.jpg",
         "us": true
-      },
-      {
-        "team": "4829",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/189.jpg",
-        "us": false
       },
       {
         "team": "5038",

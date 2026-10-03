@@ -1,7 +1,13 @@
 {
   "profile": "financialbbasket",
-  "updated": "2026-10-03T11:48:26.868Z",
+  "updated": "2026-10-03T16:30:38.021Z",
   "posts": [
+    {
+      "code": "DeCIn53Icxq",
+      "date": "2026-10-03",
+      "caption": "TEMPORADA 2026/2027\n\nBRUNO LUIS || FICHAJE🧡🤍\n\nBruno, cuarta incorporación del Intermodal Sea Solutions.\nBruno se convierte en nuestro cuarto fichaje. Aportará verticalidad y mucho ritmo a nuestro equipo.\nVamos Bruno🧡",
+      "image": "data/feed/DeCIn53Icxq.jpg"
+    },
     {
       "code": "DeB3L4toLAm",
       "date": "2026-10-03",
@@ -31,12 +37,6 @@
       "date": "2026-10-01",
       "caption": "TEMPORADA 2026/2027\n\nÁLVARO VILA RENOVADO🧡🤍\n\nÁlvaro, tercera renovación del Intermodal Sea Solutions.\nEl tirador de la familia Vila jugará su segunda temporada en el club.\nCrack💪🏻",
       "image": "data/feed/Dd8ochuoOwe.jpg"
-    },
-    {
-      "code": "Dd8fc9ciG03",
-      "date": "2026-10-01",
-      "caption": "TEMPORADA 2026/2027\n\nMANU SUBIRANA RENOVADO 🧡🤍\n\nManu, segunda renovación de Intermodal Sea Solutions.\nNuestro alero realizará su segunda temporada con el equipo, después de haber sido jugador-entrenador la temporada pasada.\nCon todo, Manu💪🏀",
-      "image": "data/feed/Dd8fc9ciG03.jpg"
     }
   ]
 }
