@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03T21:25:27.213Z",
+  "updated": "2026-10-04T12:30:38.561Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,19 @@
   "standings": {
     "segunda": [
       {
+        "team": "5040",
+        "name": "SPBasket Blanco",
+        "club": "227",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 79,
+        "pc": 51,
+        "pts": 2,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
         "team": "5003",
         "name": "King's Santander U22",
         "club": "139",
@@ -51,6 +64,32 @@
         "pts": 2,
         "crest": "data/crests/212.png",
         "us": false
+      },
+      {
+        "team": "5006",
+        "name": "Daygon U50",
+        "club": "139",
+        "pj": 1,
+        "g": 1,
+        "p": 0,
+        "pf": 62,
+        "pc": 55,
+        "pts": 2,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "4905",
+        "name": "Intermodal Sea Solutions",
+        "club": "203",
+        "pj": 1,
+        "g": 0,
+        "p": 1,
+        "pf": 55,
+        "pc": 62,
+        "pts": 1,
+        "crest": "data/crests/203.jpg",
+        "us": true
       },
       {
         "team": "5021",
@@ -79,55 +118,16 @@
         "us": false
       },
       {
-        "team": "5006",
-        "name": "Daygon U50",
-        "club": "139",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4905",
-        "name": "Intermodal Sea Solutions",
-        "club": "203",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/203.jpg",
-        "us": true
-      },
-      {
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
-        "pj": 0,
+        "pj": 1,
         "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
+        "p": 1,
+        "pf": 51,
+        "pc": 79,
+        "pts": 1,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "5040",
-        "name": "SPBasket Blanco",
-        "club": "227",
-        "pj": 0,
-        "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
-        "crest": "data/crests/227.jpg",
         "us": false
       }
     ],
@@ -290,8 +290,8 @@
       "rivalFull": "MAULA GASTROBAR DAYGON SANTANDER U50",
       "rivalCrest": "data/crests/139.jpg",
       "venue": "Pabellón Uco Lastra, Santander",
-      "res": null,
-      "score": null
+      "res": "L",
+      "score": "62-55"
     },
     {
       "id": "48370",
