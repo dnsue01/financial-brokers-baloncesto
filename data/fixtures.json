@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08T23:26:11.818Z",
+  "updated": "2026-10-10T21:50:59.495Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -26,6 +26,32 @@
   },
   "standings": {
     "segunda": [
+      {
+        "team": "5006",
+        "name": "Daygon U50",
+        "club": "139",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 116,
+        "pc": 119,
+        "pts": 3,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "4967",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 115,
+        "pc": 133,
+        "pts": 3,
+        "crest": "data/crests/189.jpg",
+        "us": false
+      },
       {
         "team": "5040",
         "name": "SPBasket Blanco",
@@ -66,19 +92,6 @@
         "us": false
       },
       {
-        "team": "5006",
-        "name": "Daygon U50",
-        "club": "139",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 62,
-        "pc": 55,
-        "pts": 2,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
         "team": "4905",
         "name": "Intermodal Sea Solutions",
         "club": "203",
@@ -116,22 +129,35 @@
         "pts": 1,
         "crest": "data/crests/128.jpg",
         "us": false
-      },
-      {
-        "team": "4967",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 51,
-        "pc": 79,
-        "pts": 1,
-        "crest": "data/crests/189.jpg",
-        "us": false
       }
     ],
     "primera": [
+      {
+        "team": "4903",
+        "name": "CB Solares",
+        "club": "182",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 137,
+        "pc": 142,
+        "pts": 3,
+        "crest": "data/crests/182.jpg",
+        "us": false
+      },
+      {
+        "team": "4747",
+        "name": "Astillero",
+        "club": "172",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 139,
+        "pc": 148,
+        "pts": 3,
+        "crest": "data/crests/172.png",
+        "us": false
+      },
       {
         "team": "4861",
         "name": "CBT Torrelavega",
@@ -185,19 +211,6 @@
         "us": true
       },
       {
-        "team": "4903",
-        "name": "CB Solares",
-        "club": "182",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 71,
-        "pc": 69,
-        "pts": 2,
-        "crest": "data/crests/182.jpg",
-        "us": false
-      },
-      {
         "team": "4827",
         "name": "Bezana",
         "club": "190",
@@ -221,19 +234,6 @@
         "pc": 69,
         "pts": 1,
         "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
-        "team": "4747",
-        "name": "Astillero",
-        "club": "172",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 66,
-        "pc": 82,
-        "pts": 1,
-        "crest": "data/crests/172.png",
         "us": false
       },
       {
