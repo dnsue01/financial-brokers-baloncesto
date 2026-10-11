@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T13:03:43.022Z",
+  "updated": "2026-10-11T22:06:37.818Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -133,6 +133,19 @@
     ],
     "primera": [
       {
+        "team": "4861",
+        "name": "CBT Torrelavega",
+        "club": "110",
+        "pj": 2,
+        "g": 2,
+        "p": 0,
+        "pf": 200,
+        "pc": 124,
+        "pts": 4,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
         "team": "4980",
         "name": "Cantbasket 04",
         "club": "6",
@@ -156,6 +169,32 @@
         "pc": 140,
         "pts": 3,
         "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "4873",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 160,
+        "pc": 158,
+        "pts": 3,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
+        "team": "5038",
+        "name": "SPBasket Rosa",
+        "club": "227",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 146,
+        "pc": 148,
+        "pts": 3,
+        "crest": "data/crests/227.jpg",
         "us": false
       },
       {
@@ -185,19 +224,6 @@
         "us": false
       },
       {
-        "team": "4861",
-        "name": "CBT Torrelavega",
-        "club": "110",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 103,
-        "pc": 51,
-        "pts": 2,
-        "crest": "data/crests/110.png",
-        "us": false
-      },
-      {
         "team": "4904",
         "name": "Financial Brokers",
         "club": "203",
@@ -214,51 +240,25 @@
         "team": "4827",
         "name": "Bezana",
         "club": "190",
-        "pj": 1,
+        "pj": 2,
         "g": 0,
-        "p": 1,
-        "pf": 69,
-        "pc": 71,
-        "pts": 1,
+        "p": 2,
+        "pf": 148,
+        "pc": 153,
+        "pts": 2,
         "crest": "data/crests/190.jpg",
-        "us": false
-      },
-      {
-        "team": "5038",
-        "name": "SPBasket Rosa",
-        "club": "227",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 64,
-        "pc": 69,
-        "pts": 1,
-        "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
-        "team": "4873",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 63,
-        "pc": 79,
-        "pts": 1,
-        "crest": "data/crests/212.png",
         "us": false
       },
       {
         "team": "4829",
         "name": "La Paz Torrelavega",
         "club": "189",
-        "pj": 1,
+        "pj": 2,
         "g": 0,
-        "p": 1,
-        "pf": 51,
-        "pc": 103,
-        "pts": 1,
+        "p": 2,
+        "pf": 130,
+        "pc": 200,
+        "pts": 2,
         "crest": "data/crests/189.jpg",
         "us": false
       },
@@ -266,12 +266,12 @@
         "team": "5002",
         "name": "Colindres",
         "club": "187",
-        "pj": 0,
+        "pj": 1,
         "g": 0,
-        "p": 0,
-        "pf": 0,
-        "pc": 0,
-        "pts": 0,
+        "p": 1,
+        "pf": 73,
+        "pc": 97,
+        "pts": 1,
         "crest": "data/crests/187.jpg",
         "us": false
       }
