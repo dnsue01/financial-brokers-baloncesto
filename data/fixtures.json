@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T21:50:59.495Z",
+  "updated": "2026-10-11T13:03:43.022Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,45 @@
   "standings": {
     "segunda": [
       {
+        "team": "5040",
+        "name": "SPBasket Blanco",
+        "club": "227",
+        "pj": 2,
+        "g": 2,
+        "p": 0,
+        "pf": 149,
+        "pc": 110,
+        "pts": 4,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
+        "team": "4905",
+        "name": "Intermodal Sea Solutions",
+        "club": "203",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 146,
+        "pc": 120,
+        "pts": 3,
+        "crest": "data/crests/203.jpg",
+        "us": true
+      },
+      {
+        "team": "4874",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 132,
+        "pc": 128,
+        "pts": 3,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "5006",
         "name": "Daygon U50",
         "club": "139",
@@ -53,19 +92,6 @@
         "us": false
       },
       {
-        "team": "5040",
-        "name": "SPBasket Blanco",
-        "club": "227",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 79,
-        "pc": 51,
-        "pts": 2,
-        "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
         "team": "5003",
         "name": "King's Santander U22",
         "club": "139",
@@ -79,30 +105,17 @@
         "us": false
       },
       {
-        "team": "4874",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 73,
-        "pc": 58,
-        "pts": 2,
-        "crest": "data/crests/212.png",
-        "us": false
-      },
-      {
-        "team": "4905",
-        "name": "Intermodal Sea Solutions",
-        "club": "203",
-        "pj": 1,
+        "team": "4938",
+        "name": "CB Corrales",
+        "club": "128",
+        "pj": 2,
         "g": 0,
-        "p": 1,
-        "pf": 55,
-        "pc": 62,
-        "pts": 1,
-        "crest": "data/crests/203.jpg",
-        "us": true
+        "p": 2,
+        "pf": 125,
+        "pc": 179,
+        "pts": 2,
+        "crest": "data/crests/128.jpg",
+        "us": false
       },
       {
         "team": "5021",
@@ -116,22 +129,35 @@
         "pts": 1,
         "crest": "data/crests/125.jpg",
         "us": false
-      },
-      {
-        "team": "4938",
-        "name": "CB Corrales",
-        "club": "128",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 67,
-        "pc": 88,
-        "pts": 1,
-        "crest": "data/crests/128.jpg",
-        "us": false
       }
     ],
     "primera": [
+      {
+        "team": "4980",
+        "name": "Cantbasket 04",
+        "club": "6",
+        "pj": 2,
+        "g": 2,
+        "p": 0,
+        "pf": 153,
+        "pc": 132,
+        "pts": 4,
+        "crest": "data/crests/6.jpg",
+        "us": false
+      },
+      {
+        "team": "5004",
+        "name": "Daygon",
+        "club": "139",
+        "pj": 2,
+        "g": 1,
+        "p": 1,
+        "pf": 151,
+        "pc": 140,
+        "pts": 3,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
       {
         "team": "4903",
         "name": "CB Solares",
@@ -169,32 +195,6 @@
         "pc": 51,
         "pts": 2,
         "crest": "data/crests/110.png",
-        "us": false
-      },
-      {
-        "team": "5004",
-        "name": "Daygon",
-        "club": "139",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 82,
-        "pc": 66,
-        "pts": 2,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4980",
-        "name": "Cantbasket 04",
-        "club": "6",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 79,
-        "pc": 63,
-        "pts": 2,
-        "crest": "data/crests/6.jpg",
         "us": false
       },
       {
@@ -332,8 +332,8 @@
       "rivalFull": "TREFILERIAS QUIJANO C.B. CORRALES",
       "rivalCrest": "data/crests/128.jpg",
       "venue": "Pabellón Numancia, Santander",
-      "res": null,
-      "score": null
+      "res": "W",
+      "score": "91-58"
     },
     {
       "id": "49463",
