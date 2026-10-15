@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T22:06:37.818Z",
+  "updated": "2026-10-15T21:30:45.242Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -37,6 +37,19 @@
         "pc": 110,
         "pts": 4,
         "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
+        "team": "5003",
+        "name": "King's Santander U22",
+        "club": "139",
+        "pj": 2,
+        "g": 2,
+        "p": 0,
+        "pf": 167,
+        "pc": 143,
+        "pts": 4,
+        "crest": "data/crests/139.jpg",
         "us": false
       },
       {
@@ -92,16 +105,16 @@
         "us": false
       },
       {
-        "team": "5003",
-        "name": "King's Santander U22",
-        "club": "139",
-        "pj": 1,
-        "g": 1,
-        "p": 0,
-        "pf": 88,
-        "pc": 67,
+        "team": "5021",
+        "name": "Ribamontán al Mar",
+        "club": "125",
+        "pj": 2,
+        "g": 0,
+        "p": 2,
+        "pf": 134,
+        "pc": 152,
         "pts": 2,
-        "crest": "data/crests/139.jpg",
+        "crest": "data/crests/125.jpg",
         "us": false
       },
       {
@@ -115,19 +128,6 @@
         "pc": 179,
         "pts": 2,
         "crest": "data/crests/128.jpg",
-        "us": false
-      },
-      {
-        "team": "5021",
-        "name": "Ribamontán al Mar",
-        "club": "125",
-        "pj": 1,
-        "g": 0,
-        "p": 1,
-        "pf": 58,
-        "pc": 73,
-        "pts": 1,
-        "crest": "data/crests/125.jpg",
         "us": false
       }
     ],
@@ -366,21 +366,6 @@
       "score": null
     },
     {
-      "id": "49465",
-      "season": "2026/27",
-      "team": "segunda",
-      "matchday": 4,
-      "date": "2026-10-24",
-      "timeKnown": false,
-      "home": false,
-      "rival": "Castrobasket",
-      "rivalFull": "BAR REST. LA CERAMICA CASTROBASKET",
-      "rivalCrest": "data/crests/212.png",
-      "venue": "Pabellón Pachi Torre, Castro-Urdiales",
-      "res": null,
-      "score": null
-    },
-    {
       "id": "48383",
       "season": "2026/27",
       "team": "primera",
@@ -392,6 +377,21 @@
       "rivalFull": "MIMOONDO-LA PAZ TVGA",
       "rivalCrest": "data/crests/189.jpg",
       "venue": "Pabellón Monte, Santander",
+      "res": null,
+      "score": null
+    },
+    {
+      "id": "49465",
+      "season": "2026/27",
+      "team": "segunda",
+      "matchday": 4,
+      "date": "2026-10-25T12:00",
+      "timeKnown": true,
+      "home": false,
+      "rival": "Castrobasket",
+      "rivalFull": "BAR REST. LA CERAMICA CASTROBASKET",
+      "rivalCrest": "data/crests/212.png",
+      "venue": "Pabellón Pachi Torre, Castro-Urdiales",
       "res": null,
       "score": null
     },
