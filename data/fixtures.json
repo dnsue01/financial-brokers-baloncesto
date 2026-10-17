@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T21:30:45.242Z",
+  "updated": "2026-10-17T20:43:09.264Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,32 @@
   "standings": {
     "segunda": [
       {
+        "team": "4905",
+        "name": "Intermodal Sea Solutions",
+        "club": "203",
+        "pj": 3,
+        "g": 2,
+        "p": 1,
+        "pf": 213,
+        "pc": 175,
+        "pts": 5,
+        "crest": "data/crests/203.jpg",
+        "us": true
+      },
+      {
+        "team": "5006",
+        "name": "Daygon U50",
+        "club": "139",
+        "pj": 3,
+        "g": 2,
+        "p": 1,
+        "pf": 185,
+        "pc": 179,
+        "pts": 5,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
         "team": "5040",
         "name": "SPBasket Blanco",
         "club": "227",
@@ -53,85 +79,72 @@
         "us": false
       },
       {
-        "team": "4905",
-        "name": "Intermodal Sea Solutions",
-        "club": "203",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 146,
-        "pc": 120,
-        "pts": 3,
-        "crest": "data/crests/203.jpg",
-        "us": true
-      },
-      {
         "team": "4874",
         "name": "Castrobasket",
         "club": "212",
-        "pj": 2,
+        "pj": 3,
         "g": 1,
-        "p": 1,
-        "pf": 132,
-        "pc": 128,
-        "pts": 3,
+        "p": 2,
+        "pf": 192,
+        "pc": 197,
+        "pts": 4,
         "crest": "data/crests/212.png",
-        "us": false
-      },
-      {
-        "team": "5006",
-        "name": "Daygon U50",
-        "club": "139",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 116,
-        "pc": 119,
-        "pts": 3,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4967",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 115,
-        "pc": 133,
-        "pts": 3,
-        "crest": "data/crests/189.jpg",
         "us": false
       },
       {
         "team": "5021",
         "name": "Ribamontán al Mar",
         "club": "125",
-        "pj": 2,
-        "g": 0,
+        "pj": 3,
+        "g": 1,
         "p": 2,
-        "pf": 134,
-        "pc": 152,
-        "pts": 2,
+        "pf": 217,
+        "pc": 226,
+        "pts": 4,
         "crest": "data/crests/125.jpg",
+        "us": false
+      },
+      {
+        "team": "4967",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 3,
+        "g": 1,
+        "p": 2,
+        "pf": 170,
+        "pc": 200,
+        "pts": 4,
+        "crest": "data/crests/189.jpg",
         "us": false
       },
       {
         "team": "4938",
         "name": "CB Corrales",
         "club": "128",
-        "pj": 2,
+        "pj": 3,
         "g": 0,
-        "p": 2,
-        "pf": 125,
-        "pc": 179,
-        "pts": 2,
+        "p": 3,
+        "pf": 199,
+        "pc": 262,
+        "pts": 3,
         "crest": "data/crests/128.jpg",
         "us": false
       }
     ],
     "primera": [
+      {
+        "team": "4980",
+        "name": "Cantbasket 04",
+        "club": "6",
+        "pj": 3,
+        "g": 3,
+        "p": 0,
+        "pf": 240,
+        "pc": 179,
+        "pts": 6,
+        "crest": "data/crests/6.jpg",
+        "us": false
+      },
       {
         "team": "4861",
         "name": "CBT Torrelavega",
@@ -146,16 +159,16 @@
         "us": false
       },
       {
-        "team": "4980",
-        "name": "Cantbasket 04",
-        "club": "6",
-        "pj": 2,
-        "g": 2,
-        "p": 0,
-        "pf": 153,
-        "pc": 132,
+        "team": "4903",
+        "name": "CB Solares",
+        "club": "182",
+        "pj": 3,
+        "g": 1,
+        "p": 2,
+        "pf": 184,
+        "pc": 229,
         "pts": 4,
-        "crest": "data/crests/6.jpg",
+        "crest": "data/crests/182.jpg",
         "us": false
       },
       {
@@ -195,19 +208,6 @@
         "pc": 148,
         "pts": 3,
         "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
-        "team": "4903",
-        "name": "CB Solares",
-        "club": "182",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 137,
-        "pc": 142,
-        "pts": 3,
-        "crest": "data/crests/182.jpg",
         "us": false
       },
       {
@@ -347,8 +347,8 @@
       "rivalFull": "LA PAZ TVGA",
       "rivalCrest": "data/crests/189.jpg",
       "venue": "Pabellón Monte, Santander",
-      "res": null,
-      "score": null
+      "res": "W",
+      "score": "67-55"
     },
     {
       "id": "48380",
