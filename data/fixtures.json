@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T11:20:34.772Z",
+  "updated": "2026-10-18T15:57:43.933Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -133,6 +133,19 @@
     ],
     "primera": [
       {
+        "team": "4861",
+        "name": "CBT Torrelavega",
+        "club": "110",
+        "pj": 3,
+        "g": 3,
+        "p": 0,
+        "pf": 289,
+        "pc": 190,
+        "pts": 6,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
         "team": "4980",
         "name": "Cantbasket 04",
         "club": "6",
@@ -159,19 +172,6 @@
         "us": false
       },
       {
-        "team": "4861",
-        "name": "CBT Torrelavega",
-        "club": "110",
-        "pj": 2,
-        "g": 2,
-        "p": 0,
-        "pf": 200,
-        "pc": 124,
-        "pts": 4,
-        "crest": "data/crests/110.png",
-        "us": false
-      },
-      {
         "team": "4873",
         "name": "Castrobasket",
         "club": "212",
@@ -195,6 +195,19 @@
         "pc": 229,
         "pts": 4,
         "crest": "data/crests/182.jpg",
+        "us": false
+      },
+      {
+        "team": "4829",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 3,
+        "g": 1,
+        "p": 2,
+        "pf": 212,
+        "pc": 260,
+        "pts": 4,
+        "crest": "data/crests/189.jpg",
         "us": false
       },
       {
@@ -227,12 +240,12 @@
         "team": "4904",
         "name": "Financial Brokers",
         "club": "203",
-        "pj": 1,
+        "pj": 2,
         "g": 1,
-        "p": 0,
-        "pf": 69,
-        "pc": 64,
-        "pts": 2,
+        "p": 1,
+        "pf": 135,
+        "pc": 153,
+        "pts": 3,
         "crest": "data/crests/203.jpg",
         "us": true
       },
@@ -250,28 +263,15 @@
         "us": false
       },
       {
-        "team": "4829",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 2,
-        "g": 0,
-        "p": 2,
-        "pf": 130,
-        "pc": 200,
-        "pts": 2,
-        "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
         "team": "5002",
         "name": "Colindres",
         "club": "187",
-        "pj": 1,
+        "pj": 2,
         "g": 0,
-        "p": 1,
-        "pf": 73,
-        "pc": 97,
-        "pts": 1,
+        "p": 2,
+        "pf": 133,
+        "pc": 179,
+        "pts": 2,
         "crest": "data/crests/187.jpg",
         "us": false
       }
@@ -362,8 +362,8 @@
       "rivalFull": "CBT TORRELAVEGA \"A\"",
       "rivalCrest": "data/crests/110.png",
       "venue": "Pabellón Habana Vieja, Torrelavega",
-      "res": null,
-      "score": null
+      "res": "L",
+      "score": "89-66"
     },
     {
       "id": "48383",
