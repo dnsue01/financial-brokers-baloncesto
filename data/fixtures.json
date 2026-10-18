@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T20:43:09.264Z",
+  "updated": "2026-10-18T04:43:58.238Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,19 @@
   "standings": {
     "segunda": [
       {
+        "team": "5040",
+        "name": "SPBasket Blanco",
+        "club": "227",
+        "pj": 3,
+        "g": 3,
+        "p": 0,
+        "pf": 234,
+        "pc": 193,
+        "pts": 6,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
         "team": "4905",
         "name": "Intermodal Sea Solutions",
         "club": "203",
@@ -40,6 +53,19 @@
         "us": true
       },
       {
+        "team": "5003",
+        "name": "King's Santander U22",
+        "club": "139",
+        "pj": 3,
+        "g": 2,
+        "p": 1,
+        "pf": 250,
+        "pc": 228,
+        "pts": 5,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
         "team": "5006",
         "name": "Daygon U50",
         "club": "139",
@@ -49,32 +75,6 @@
         "pf": 185,
         "pc": 179,
         "pts": 5,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "5040",
-        "name": "SPBasket Blanco",
-        "club": "227",
-        "pj": 2,
-        "g": 2,
-        "p": 0,
-        "pf": 149,
-        "pc": 110,
-        "pts": 4,
-        "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
-        "team": "5003",
-        "name": "King's Santander U22",
-        "club": "139",
-        "pj": 2,
-        "g": 2,
-        "p": 0,
-        "pf": 167,
-        "pc": 143,
-        "pts": 4,
         "crest": "data/crests/139.jpg",
         "us": false
       },
