@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T04:43:58.238Z",
+  "updated": "2026-10-18T11:20:34.772Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -146,6 +146,19 @@
         "us": false
       },
       {
+        "team": "5004",
+        "name": "Daygon",
+        "club": "139",
+        "pj": 3,
+        "g": 2,
+        "p": 1,
+        "pf": 232,
+        "pc": 213,
+        "pts": 5,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
         "team": "4861",
         "name": "CBT Torrelavega",
         "club": "110",
@@ -159,6 +172,19 @@
         "us": false
       },
       {
+        "team": "4873",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 3,
+        "g": 1,
+        "p": 2,
+        "pf": 233,
+        "pc": 239,
+        "pts": 4,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "4903",
         "name": "CB Solares",
         "club": "182",
@@ -169,32 +195,6 @@
         "pc": 229,
         "pts": 4,
         "crest": "data/crests/182.jpg",
-        "us": false
-      },
-      {
-        "team": "5004",
-        "name": "Daygon",
-        "club": "139",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 151,
-        "pc": 140,
-        "pts": 3,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4873",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 160,
-        "pc": 158,
-        "pts": 3,
-        "crest": "data/crests/212.png",
         "us": false
       },
       {
