@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T15:57:43.933Z",
+  "updated": "2026-10-18T20:52:59.930Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -172,6 +172,19 @@
         "us": false
       },
       {
+        "team": "5038",
+        "name": "SPBasket Rosa",
+        "club": "227",
+        "pj": 3,
+        "g": 2,
+        "p": 1,
+        "pf": 227,
+        "pc": 216,
+        "pts": 5,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
         "team": "4873",
         "name": "Castrobasket",
         "club": "212",
@@ -182,6 +195,19 @@
         "pc": 239,
         "pts": 4,
         "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
+        "team": "4747",
+        "name": "Astillero",
+        "club": "172",
+        "pj": 3,
+        "g": 1,
+        "p": 2,
+        "pf": 207,
+        "pc": 229,
+        "pts": 4,
+        "crest": "data/crests/172.png",
         "us": false
       },
       {
@@ -208,32 +234,6 @@
         "pc": 260,
         "pts": 4,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "5038",
-        "name": "SPBasket Rosa",
-        "club": "227",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 146,
-        "pc": 148,
-        "pts": 3,
-        "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
-        "team": "4747",
-        "name": "Astillero",
-        "club": "172",
-        "pj": 2,
-        "g": 1,
-        "p": 1,
-        "pf": 139,
-        "pc": 148,
-        "pts": 3,
-        "crest": "data/crests/172.png",
         "us": false
       },
       {
