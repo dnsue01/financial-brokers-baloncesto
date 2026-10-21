@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T20:52:59.930Z",
+  "updated": "2026-10-21T17:20:51.678Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -415,8 +415,8 @@
       "season": "2026/27",
       "team": "primera",
       "matchday": 5,
-      "date": "2026-11-01",
-      "timeKnown": false,
+      "date": "2026-11-01T19:00",
+      "timeKnown": true,
       "home": false,
       "rival": "Colindres",
       "rivalFull": "ADB COLINDRES",
