@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T17:20:51.678Z",
+  "updated": "2026-10-22T12:03:40.923Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -464,7 +464,7 @@
       "timeKnown": true,
       "home": true,
       "rival": "Bezana",
-      "rivalFull": "BALONCESTO BEZANA",
+      "rivalFull": "CANORIN LAS FLORES BEZANA",
       "rivalCrest": "data/crests/190.jpg",
       "venue": "Pabellón Monte, Santander",
       "res": null,
@@ -746,7 +746,7 @@
       "timeKnown": true,
       "home": false,
       "rival": "Bezana",
-      "rivalFull": "BALONCESTO BEZANA",
+      "rivalFull": "CANORIN LAS FLORES BEZANA",
       "rivalCrest": "data/crests/190.jpg",
       "venue": "Pabellón José Escandón, Santa Cruz de Bezana",
       "res": null,
