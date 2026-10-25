@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T20:57:15.312Z",
+  "updated": "2026-10-25T16:32:27.156Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -43,14 +43,27 @@
         "team": "4905",
         "name": "Intermodal Sea Solutions",
         "club": "203",
-        "pj": 3,
-        "g": 2,
+        "pj": 4,
+        "g": 3,
         "p": 1,
-        "pf": 213,
-        "pc": 175,
-        "pts": 5,
+        "pf": 278,
+        "pc": 226,
+        "pts": 7,
         "crest": "data/crests/203.jpg",
         "us": true
+      },
+      {
+        "team": "4967",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 4,
+        "g": 2,
+        "p": 2,
+        "pf": 224,
+        "pc": 238,
+        "pts": 6,
+        "crest": "data/crests/189.jpg",
+        "us": false
       },
       {
         "team": "5003",
@@ -79,6 +92,19 @@
         "us": false
       },
       {
+        "team": "4874",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 4,
+        "g": 1,
+        "p": 3,
+        "pf": 243,
+        "pc": 262,
+        "pts": 5,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "5021",
         "name": "Ribamontán al Mar",
         "club": "125",
@@ -92,46 +118,33 @@
         "us": false
       },
       {
-        "team": "4874",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 3,
-        "g": 1,
-        "p": 2,
-        "pf": 192,
-        "pc": 197,
-        "pts": 4,
-        "crest": "data/crests/212.png",
-        "us": false
-      },
-      {
-        "team": "4967",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 3,
-        "g": 1,
-        "p": 2,
-        "pf": 170,
-        "pc": 200,
-        "pts": 4,
-        "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
         "team": "4938",
         "name": "CB Corrales",
         "club": "128",
-        "pj": 3,
+        "pj": 4,
         "g": 0,
-        "p": 3,
-        "pf": 199,
-        "pc": 262,
-        "pts": 3,
+        "p": 4,
+        "pf": 237,
+        "pc": 316,
+        "pts": 4,
         "crest": "data/crests/128.jpg",
         "us": false
       }
     ],
     "primera": [
+      {
+        "team": "4980",
+        "name": "Cantbasket 04",
+        "club": "6",
+        "pj": 4,
+        "g": 4,
+        "p": 0,
+        "pf": 313,
+        "pc": 245,
+        "pts": 8,
+        "crest": "data/crests/6.jpg",
+        "us": false
+      },
       {
         "team": "5004",
         "name": "Daygon",
@@ -159,28 +172,15 @@
         "us": false
       },
       {
-        "team": "4980",
-        "name": "Cantbasket 04",
-        "club": "6",
-        "pj": 3,
-        "g": 3,
-        "p": 0,
-        "pf": 240,
-        "pc": 179,
-        "pts": 6,
-        "crest": "data/crests/6.jpg",
-        "us": false
-      },
-      {
         "team": "5038",
         "name": "SPBasket Rosa",
         "club": "227",
-        "pj": 3,
+        "pj": 4,
         "g": 2,
-        "p": 1,
-        "pf": 227,
-        "pc": 216,
-        "pts": 5,
+        "p": 2,
+        "pf": 293,
+        "pc": 289,
+        "pts": 6,
         "crest": "data/crests/227.jpg",
         "us": false
       },
@@ -392,8 +392,8 @@
       "rivalFull": "BAR REST. LA CERAMICA CASTROBASKET",
       "rivalCrest": "data/crests/212.png",
       "venue": "Pabellón Pachi Torre, Castro-Urdiales",
-      "res": null,
-      "score": null
+      "res": "W",
+      "score": "51-65"
     },
     {
       "id": "49470",
