@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T16:32:27.156Z",
+  "updated": "2026-10-25T20:57:21.630Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -172,6 +172,19 @@
         "us": false
       },
       {
+        "team": "4873",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 4,
+        "g": 2,
+        "p": 2,
+        "pf": 321,
+        "pc": 308,
+        "pts": 6,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "5038",
         "name": "SPBasket Rosa",
         "club": "227",
@@ -224,19 +237,6 @@
         "us": false
       },
       {
-        "team": "4873",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 3,
-        "g": 1,
-        "p": 2,
-        "pf": 233,
-        "pc": 239,
-        "pts": 4,
-        "crest": "data/crests/212.png",
-        "us": false
-      },
-      {
         "team": "4747",
         "name": "Astillero",
         "club": "172",
@@ -250,6 +250,19 @@
         "us": false
       },
       {
+        "team": "5002",
+        "name": "Colindres",
+        "club": "187",
+        "pj": 3,
+        "g": 0,
+        "p": 3,
+        "pf": 202,
+        "pc": 267,
+        "pts": 3,
+        "crest": "data/crests/187.jpg",
+        "us": false
+      },
+      {
         "team": "4827",
         "name": "Bezana",
         "club": "190",
@@ -260,19 +273,6 @@
         "pc": 153,
         "pts": 2,
         "crest": "data/crests/190.jpg",
-        "us": false
-      },
-      {
-        "team": "5002",
-        "name": "Colindres",
-        "club": "187",
-        "pj": 2,
-        "g": 0,
-        "p": 2,
-        "pf": 133,
-        "pc": 179,
-        "pts": 2,
-        "crest": "data/crests/187.jpg",
         "us": false
       }
     ]
