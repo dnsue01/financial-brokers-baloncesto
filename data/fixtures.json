@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T20:57:21.630Z",
+  "updated": "2026-10-27T22:23:04.567Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -53,6 +53,32 @@
         "us": true
       },
       {
+        "team": "5003",
+        "name": "King's Santander U22",
+        "club": "139",
+        "pj": 4,
+        "g": 3,
+        "p": 1,
+        "pf": 345,
+        "pc": 303,
+        "pts": 7,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "5006",
+        "name": "Daygon U50",
+        "club": "139",
+        "pj": 4,
+        "g": 2,
+        "p": 2,
+        "pf": 260,
+        "pc": 274,
+        "pts": 6,
+        "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -63,32 +89,6 @@
         "pc": 238,
         "pts": 6,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "5003",
-        "name": "King's Santander U22",
-        "club": "139",
-        "pj": 3,
-        "g": 2,
-        "p": 1,
-        "pf": 250,
-        "pc": 228,
-        "pts": 5,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "5006",
-        "name": "Daygon U50",
-        "club": "139",
-        "pj": 3,
-        "g": 2,
-        "p": 1,
-        "pf": 185,
-        "pc": 179,
-        "pts": 5,
-        "crest": "data/crests/139.jpg",
         "us": false
       },
       {
