@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T22:23:04.567Z",
+  "updated": "2026-10-29T13:17:03.681Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -419,7 +419,7 @@
       "timeKnown": true,
       "home": false,
       "rival": "Colindres",
-      "rivalFull": "ADB COLINDRES",
+      "rivalFull": "DEPURA VIDA COLINDRES",
       "rivalCrest": "data/crests/187.jpg",
       "venue": "Pabellón nº 1, Colindres",
       "res": null,
@@ -716,7 +716,7 @@
       "timeKnown": true,
       "home": true,
       "rival": "Colindres",
-      "rivalFull": "ADB COLINDRES",
+      "rivalFull": "DEPURA VIDA COLINDRES",
       "rivalCrest": "data/crests/187.jpg",
       "venue": "Pabellón Monte, Santander",
       "res": null,
