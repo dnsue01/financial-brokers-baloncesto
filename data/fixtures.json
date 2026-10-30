@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T13:17:03.681Z",
+  "updated": "2026-10-30T22:27:51.191Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -133,6 +133,19 @@
     ],
     "primera": [
       {
+        "team": "4861",
+        "name": "CBT Torrelavega",
+        "club": "110",
+        "pj": 4,
+        "g": 4,
+        "p": 0,
+        "pf": 381,
+        "pc": 246,
+        "pts": 8,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
         "team": "4980",
         "name": "Cantbasket 04",
         "club": "6",
@@ -156,19 +169,6 @@
         "pc": 253,
         "pts": 7,
         "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4861",
-        "name": "CBT Torrelavega",
-        "club": "110",
-        "pj": 3,
-        "g": 3,
-        "p": 0,
-        "pf": 289,
-        "pc": 190,
-        "pts": 6,
-        "crest": "data/crests/110.png",
         "us": false
       },
       {
@@ -250,6 +250,19 @@
         "us": false
       },
       {
+        "team": "4827",
+        "name": "Bezana",
+        "club": "190",
+        "pj": 3,
+        "g": 0,
+        "p": 3,
+        "pf": 204,
+        "pc": 245,
+        "pts": 3,
+        "crest": "data/crests/190.jpg",
+        "us": false
+      },
+      {
         "team": "5002",
         "name": "Colindres",
         "club": "187",
@@ -260,19 +273,6 @@
         "pc": 267,
         "pts": 3,
         "crest": "data/crests/187.jpg",
-        "us": false
-      },
-      {
-        "team": "4827",
-        "name": "Bezana",
-        "club": "190",
-        "pj": 2,
-        "g": 0,
-        "p": 2,
-        "pf": 148,
-        "pc": 153,
-        "pts": 2,
-        "crest": "data/crests/190.jpg",
         "us": false
       }
     ]
