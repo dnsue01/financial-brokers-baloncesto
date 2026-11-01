@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01T17:58:05.054Z",
+  "updated": "2026-11-01T22:09:53.486Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -198,6 +198,32 @@
         "us": false
       },
       {
+        "team": "4904",
+        "name": "Financial Brokers",
+        "club": "203",
+        "pj": 4,
+        "g": 2,
+        "p": 2,
+        "pf": 281,
+        "pc": 282,
+        "pts": 6,
+        "crest": "data/crests/203.jpg",
+        "us": true
+      },
+      {
+        "team": "4829",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 5,
+        "g": 1,
+        "p": 4,
+        "pf": 351,
+        "pc": 425,
+        "pts": 6,
+        "crest": "data/crests/189.jpg",
+        "us": false
+      },
+      {
         "team": "4903",
         "name": "CB Solares",
         "club": "182",
@@ -211,17 +237,17 @@
         "us": false
       },
       {
-        "team": "4904",
-        "name": "Financial Brokers",
-        "club": "203",
-        "pj": 3,
-        "g": 2,
-        "p": 1,
-        "pf": 216,
-        "pc": 214,
+        "team": "4827",
+        "name": "Bezana",
+        "club": "190",
+        "pj": 4,
+        "g": 1,
+        "p": 3,
+        "pf": 288,
+        "pc": 323,
         "pts": 5,
-        "crest": "data/crests/203.jpg",
-        "us": true
+        "crest": "data/crests/190.jpg",
+        "us": false
       },
       {
         "team": "4747",
@@ -237,41 +263,15 @@
         "us": false
       },
       {
-        "team": "4829",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 4,
-        "g": 1,
-        "p": 3,
-        "pf": 273,
-        "pc": 341,
-        "pts": 5,
-        "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "4827",
-        "name": "Bezana",
-        "club": "190",
-        "pj": 3,
-        "g": 0,
-        "p": 3,
-        "pf": 204,
-        "pc": 245,
-        "pts": 3,
-        "crest": "data/crests/190.jpg",
-        "us": false
-      },
-      {
         "team": "5002",
         "name": "Colindres",
         "club": "187",
-        "pj": 3,
-        "g": 0,
+        "pj": 4,
+        "g": 1,
         "p": 3,
-        "pf": 202,
-        "pc": 267,
-        "pts": 3,
+        "pf": 270,
+        "pc": 332,
+        "pts": 5,
         "crest": "data/crests/187.jpg",
         "us": false
       }
@@ -422,8 +422,8 @@
       "rivalFull": "DEPURA VIDA COLINDRES",
       "rivalCrest": "data/crests/187.jpg",
       "venue": "Pabellón nº 1, Colindres",
-      "res": null,
-      "score": null
+      "res": "L",
+      "score": "68-65"
     },
     {
       "id": "48392",
