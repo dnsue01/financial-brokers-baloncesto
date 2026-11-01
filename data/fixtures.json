@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T21:42:37.849Z",
+  "updated": "2026-11-01T17:58:05.054Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,19 @@
   "standings": {
     "segunda": [
       {
+        "team": "5040",
+        "name": "SPBasket Blanco",
+        "club": "227",
+        "pj": 5,
+        "g": 4,
+        "p": 1,
+        "pf": 415,
+        "pc": 335,
+        "pts": 9,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
         "team": "4905",
         "name": "Intermodal Sea Solutions",
         "club": "203",
@@ -38,19 +51,6 @@
         "pts": 9,
         "crest": "data/crests/203.jpg",
         "us": true
-      },
-      {
-        "team": "5040",
-        "name": "SPBasket Blanco",
-        "club": "227",
-        "pj": 4,
-        "g": 4,
-        "p": 0,
-        "pf": 346,
-        "pc": 262,
-        "pts": 8,
-        "crest": "data/crests/227.jpg",
-        "us": false
       },
       {
         "team": "5003",
@@ -69,12 +69,12 @@
         "team": "5006",
         "name": "Daygon U50",
         "club": "139",
-        "pj": 4,
-        "g": 2,
+        "pj": 5,
+        "g": 3,
         "p": 2,
-        "pf": 260,
-        "pc": 274,
-        "pts": 6,
+        "pf": 350,
+        "pc": 346,
+        "pts": 8,
         "crest": "data/crests/139.jpg",
         "us": false
       },
@@ -82,12 +82,12 @@
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
-        "pj": 4,
-        "g": 2,
+        "pj": 5,
+        "g": 3,
         "p": 2,
-        "pf": 224,
-        "pc": 238,
-        "pts": 6,
+        "pf": 305,
+        "pc": 314,
+        "pts": 8,
         "crest": "data/crests/189.jpg",
         "us": false
       },
@@ -95,12 +95,12 @@
         "team": "4874",
         "name": "Castrobasket",
         "club": "212",
-        "pj": 4,
+        "pj": 5,
         "g": 1,
-        "p": 3,
-        "pf": 243,
-        "pc": 262,
-        "pts": 5,
+        "p": 4,
+        "pf": 319,
+        "pc": 343,
+        "pts": 6,
         "crest": "data/crests/212.png",
         "us": false
       },
@@ -108,12 +108,12 @@
         "team": "5021",
         "name": "Ribamontán al Mar",
         "club": "125",
-        "pj": 4,
+        "pj": 5,
         "g": 1,
-        "p": 3,
-        "pf": 286,
-        "pc": 338,
-        "pts": 5,
+        "p": 4,
+        "pf": 358,
+        "pc": 428,
+        "pts": 6,
         "crest": "data/crests/125.jpg",
         "us": false
       },
@@ -121,17 +121,30 @@
         "team": "4938",
         "name": "CB Corrales",
         "club": "128",
-        "pj": 4,
-        "g": 0,
+        "pj": 5,
+        "g": 1,
         "p": 4,
-        "pf": 237,
-        "pc": 316,
-        "pts": 4,
+        "pf": 310,
+        "pc": 385,
+        "pts": 6,
         "crest": "data/crests/128.jpg",
         "us": false
       }
     ],
     "primera": [
+      {
+        "team": "4861",
+        "name": "CBT Torrelavega",
+        "club": "110",
+        "pj": 5,
+        "g": 5,
+        "p": 0,
+        "pf": 459,
+        "pc": 301,
+        "pts": 10,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
       {
         "team": "5004",
         "name": "Daygon",
@@ -143,19 +156,6 @@
         "pc": 312,
         "pts": 9,
         "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
-        "team": "4861",
-        "name": "CBT Torrelavega",
-        "club": "110",
-        "pj": 4,
-        "g": 4,
-        "p": 0,
-        "pf": 381,
-        "pc": 246,
-        "pts": 8,
-        "crest": "data/crests/110.png",
         "us": false
       },
       {
@@ -224,6 +224,19 @@
         "us": true
       },
       {
+        "team": "4747",
+        "name": "Astillero",
+        "club": "172",
+        "pj": 4,
+        "g": 1,
+        "p": 3,
+        "pf": 262,
+        "pc": 307,
+        "pts": 5,
+        "crest": "data/crests/172.png",
+        "us": false
+      },
+      {
         "team": "4829",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -234,19 +247,6 @@
         "pc": 341,
         "pts": 5,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "4747",
-        "name": "Astillero",
-        "club": "172",
-        "pj": 3,
-        "g": 1,
-        "p": 2,
-        "pf": 207,
-        "pc": 229,
-        "pts": 4,
-        "crest": "data/crests/172.png",
         "us": false
       },
       {
