@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01T22:09:53.486Z",
+  "updated": "2026-11-14T06:40:38.550Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -79,6 +79,19 @@
         "us": false
       },
       {
+        "team": "4874",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 6,
+        "g": 2,
+        "p": 4,
+        "pf": 397,
+        "pc": 399,
+        "pts": 8,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -92,16 +105,16 @@
         "us": false
       },
       {
-        "team": "4874",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 5,
+        "team": "4938",
+        "name": "CB Corrales",
+        "club": "128",
+        "pj": 6,
         "g": 1,
-        "p": 4,
-        "pf": 319,
-        "pc": 343,
-        "pts": 6,
-        "crest": "data/crests/212.png",
+        "p": 5,
+        "pf": 366,
+        "pc": 463,
+        "pts": 7,
+        "crest": "data/crests/128.jpg",
         "us": false
       },
       {
@@ -115,19 +128,6 @@
         "pc": 428,
         "pts": 6,
         "crest": "data/crests/125.jpg",
-        "us": false
-      },
-      {
-        "team": "4938",
-        "name": "CB Corrales",
-        "club": "128",
-        "pj": 5,
-        "g": 1,
-        "p": 4,
-        "pf": 310,
-        "pc": 385,
-        "pts": 6,
-        "crest": "data/crests/128.jpg",
         "us": false
       }
     ],
