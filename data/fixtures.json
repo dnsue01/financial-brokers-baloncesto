@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T06:40:38.550Z",
+  "updated": "2026-11-14T22:35:47.982Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -27,6 +27,32 @@
   "standings": {
     "segunda": [
       {
+        "team": "4905",
+        "name": "Intermodal Sea Solutions",
+        "club": "203",
+        "pj": 6,
+        "g": 5,
+        "p": 1,
+        "pf": 480,
+        "pc": 370,
+        "pts": 11,
+        "crest": "data/crests/203.jpg",
+        "us": true
+      },
+      {
+        "team": "4967",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 6,
+        "g": 4,
+        "p": 2,
+        "pf": 366,
+        "pc": 373,
+        "pts": 10,
+        "crest": "data/crests/189.jpg",
+        "us": false
+      },
+      {
         "team": "5040",
         "name": "SPBasket Blanco",
         "club": "227",
@@ -40,28 +66,15 @@
         "us": false
       },
       {
-        "team": "4905",
-        "name": "Intermodal Sea Solutions",
-        "club": "203",
-        "pj": 5,
-        "g": 4,
-        "p": 1,
-        "pf": 379,
-        "pc": 311,
-        "pts": 9,
-        "crest": "data/crests/203.jpg",
-        "us": true
-      },
-      {
         "team": "5003",
         "name": "King's Santander U22",
         "club": "139",
-        "pj": 5,
+        "pj": 6,
         "g": 3,
-        "p": 2,
-        "pf": 430,
-        "pc": 404,
-        "pts": 8,
+        "p": 3,
+        "pf": 489,
+        "pc": 465,
+        "pts": 9,
         "crest": "data/crests/139.jpg",
         "us": false
       },
@@ -92,19 +105,6 @@
         "us": false
       },
       {
-        "team": "4967",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 5,
-        "g": 3,
-        "p": 2,
-        "pf": 305,
-        "pc": 314,
-        "pts": 8,
-        "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
         "team": "4938",
         "name": "CB Corrales",
         "club": "128",
@@ -121,12 +121,12 @@
         "team": "5021",
         "name": "Ribamontán al Mar",
         "club": "125",
-        "pj": 5,
+        "pj": 6,
         "g": 1,
-        "p": 4,
-        "pf": 358,
-        "pc": 428,
-        "pts": 6,
+        "p": 5,
+        "pf": 417,
+        "pc": 529,
+        "pts": 7,
         "crest": "data/crests/125.jpg",
         "us": false
       }
@@ -146,6 +146,19 @@
         "us": false
       },
       {
+        "team": "4873",
+        "name": "Castrobasket",
+        "club": "212",
+        "pj": 6,
+        "g": 4,
+        "p": 2,
+        "pf": 492,
+        "pc": 441,
+        "pts": 10,
+        "crest": "data/crests/212.png",
+        "us": false
+      },
+      {
         "team": "5004",
         "name": "Daygon",
         "club": "139",
@@ -156,6 +169,19 @@
         "pc": 312,
         "pts": 9,
         "crest": "data/crests/139.jpg",
+        "us": false
+      },
+      {
+        "team": "5038",
+        "name": "SPBasket Rosa",
+        "club": "227",
+        "pj": 6,
+        "g": 3,
+        "p": 3,
+        "pf": 435,
+        "pc": 404,
+        "pts": 9,
+        "crest": "data/crests/227.jpg",
         "us": false
       },
       {
@@ -172,43 +198,30 @@
         "us": false
       },
       {
-        "team": "4873",
-        "name": "Castrobasket",
-        "club": "212",
-        "pj": 5,
-        "g": 3,
-        "p": 2,
-        "pf": 419,
-        "pc": 372,
-        "pts": 8,
-        "crest": "data/crests/212.png",
-        "us": false
-      },
-      {
-        "team": "5038",
-        "name": "SPBasket Rosa",
-        "club": "227",
-        "pj": 5,
-        "g": 2,
-        "p": 3,
-        "pf": 352,
-        "pc": 362,
-        "pts": 7,
-        "crest": "data/crests/227.jpg",
-        "us": false
-      },
-      {
         "team": "4904",
         "name": "Financial Brokers",
         "club": "203",
-        "pj": 4,
+        "pj": 5,
         "g": 2,
-        "p": 2,
-        "pf": 281,
-        "pc": 282,
-        "pts": 6,
+        "p": 3,
+        "pf": 350,
+        "pc": 355,
+        "pts": 7,
         "crest": "data/crests/203.jpg",
         "us": true
+      },
+      {
+        "team": "4903",
+        "name": "CB Solares",
+        "club": "182",
+        "pj": 6,
+        "g": 1,
+        "p": 5,
+        "pf": 330,
+        "pc": 501,
+        "pts": 7,
+        "crest": "data/crests/182.jpg",
+        "us": false
       },
       {
         "team": "4829",
@@ -221,19 +234,6 @@
         "pc": 425,
         "pts": 6,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "4903",
-        "name": "CB Solares",
-        "club": "182",
-        "pj": 5,
-        "g": 1,
-        "p": 4,
-        "pf": 288,
-        "pc": 418,
-        "pts": 6,
-        "crest": "data/crests/182.jpg",
         "us": false
       },
       {
@@ -437,8 +437,8 @@
       "rivalFull": "FISIOENERGIA CASTROBASKET",
       "rivalCrest": "data/crests/212.png",
       "venue": "Pabellón Monte, Santander",
-      "res": null,
-      "score": null
+      "res": "L",
+      "score": "69-73"
     },
     {
       "id": "49474",
@@ -452,8 +452,8 @@
       "rivalFull": "RIBAMONTAN AL MAR",
       "rivalCrest": "data/crests/125.jpg",
       "venue": "Pabellón Latas, Somo",
-      "res": null,
-      "score": null
+      "res": "W",
+      "score": "59-101"
     },
     {
       "id": "48401",
