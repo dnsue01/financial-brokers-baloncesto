@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T22:35:47.982Z",
+  "updated": "2026-11-15T18:57:02.650Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -40,6 +40,19 @@
         "us": true
       },
       {
+        "team": "5040",
+        "name": "SPBasket Blanco",
+        "club": "227",
+        "pj": 6,
+        "g": 5,
+        "p": 1,
+        "pf": 491,
+        "pc": 406,
+        "pts": 11,
+        "crest": "data/crests/227.jpg",
+        "us": false
+      },
+      {
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -50,19 +63,6 @@
         "pc": 373,
         "pts": 10,
         "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
-        "team": "5040",
-        "name": "SPBasket Blanco",
-        "club": "227",
-        "pj": 5,
-        "g": 4,
-        "p": 1,
-        "pf": 415,
-        "pc": 335,
-        "pts": 9,
-        "crest": "data/crests/227.jpg",
         "us": false
       },
       {
@@ -82,12 +82,12 @@
         "team": "5006",
         "name": "Daygon U50",
         "club": "139",
-        "pj": 5,
+        "pj": 6,
         "g": 3,
-        "p": 2,
-        "pf": 350,
-        "pc": 346,
-        "pts": 8,
+        "p": 3,
+        "pf": 421,
+        "pc": 422,
+        "pts": 9,
         "crest": "data/crests/139.jpg",
         "us": false
       },
@@ -136,13 +136,26 @@
         "team": "4861",
         "name": "CBT Torrelavega",
         "club": "110",
+        "pj": 6,
+        "g": 5,
+        "p": 1,
+        "pf": 544,
+        "pc": 390,
+        "pts": 11,
+        "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
+        "team": "4980",
+        "name": "Cantbasket 04",
+        "club": "6",
         "pj": 5,
         "g": 5,
         "p": 0,
-        "pf": 459,
-        "pc": 301,
+        "pf": 402,
+        "pc": 330,
         "pts": 10,
-        "crest": "data/crests/110.png",
+        "crest": "data/crests/6.jpg",
         "us": false
       },
       {
@@ -185,19 +198,6 @@
         "us": false
       },
       {
-        "team": "4980",
-        "name": "Cantbasket 04",
-        "club": "6",
-        "pj": 4,
-        "g": 4,
-        "p": 0,
-        "pf": 313,
-        "pc": 245,
-        "pts": 8,
-        "crest": "data/crests/6.jpg",
-        "us": false
-      },
-      {
         "team": "4904",
         "name": "Financial Brokers",
         "club": "203",
@@ -209,6 +209,32 @@
         "pts": 7,
         "crest": "data/crests/203.jpg",
         "us": true
+      },
+      {
+        "team": "4747",
+        "name": "Astillero",
+        "club": "172",
+        "pj": 5,
+        "g": 2,
+        "p": 3,
+        "pf": 369,
+        "pc": 404,
+        "pts": 7,
+        "crest": "data/crests/172.png",
+        "us": false
+      },
+      {
+        "team": "4829",
+        "name": "La Paz Torrelavega",
+        "club": "189",
+        "pj": 6,
+        "g": 1,
+        "p": 5,
+        "pf": 448,
+        "pc": 532,
+        "pts": 7,
+        "crest": "data/crests/189.jpg",
+        "us": false
       },
       {
         "team": "4903",
@@ -224,19 +250,6 @@
         "us": false
       },
       {
-        "team": "4829",
-        "name": "La Paz Torrelavega",
-        "club": "189",
-        "pj": 5,
-        "g": 1,
-        "p": 4,
-        "pf": 351,
-        "pc": 425,
-        "pts": 6,
-        "crest": "data/crests/189.jpg",
-        "us": false
-      },
-      {
         "team": "4827",
         "name": "Bezana",
         "club": "190",
@@ -247,19 +260,6 @@
         "pc": 323,
         "pts": 5,
         "crest": "data/crests/190.jpg",
-        "us": false
-      },
-      {
-        "team": "4747",
-        "name": "Astillero",
-        "club": "172",
-        "pj": 4,
-        "g": 1,
-        "p": 3,
-        "pf": 262,
-        "pc": 307,
-        "pts": 5,
-        "crest": "data/crests/172.png",
         "us": false
       },
       {
