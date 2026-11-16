@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T18:57:02.650Z",
+  "updated": "2026-11-16T06:44:58.995Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -224,6 +224,19 @@
         "us": false
       },
       {
+        "team": "5002",
+        "name": "Colindres",
+        "club": "187",
+        "pj": 5,
+        "g": 2,
+        "p": 3,
+        "pf": 342,
+        "pc": 402,
+        "pts": 7,
+        "crest": "data/crests/187.jpg",
+        "us": false
+      },
+      {
         "team": "4829",
         "name": "La Paz Torrelavega",
         "club": "189",
@@ -253,26 +266,13 @@
         "team": "4827",
         "name": "Bezana",
         "club": "190",
-        "pj": 4,
+        "pj": 5,
         "g": 1,
-        "p": 3,
-        "pf": 288,
-        "pc": 323,
-        "pts": 5,
+        "p": 4,
+        "pf": 358,
+        "pc": 395,
+        "pts": 6,
         "crest": "data/crests/190.jpg",
-        "us": false
-      },
-      {
-        "team": "5002",
-        "name": "Colindres",
-        "club": "187",
-        "pj": 4,
-        "g": 1,
-        "p": 3,
-        "pf": 270,
-        "pc": 332,
-        "pts": 5,
-        "crest": "data/crests/187.jpg",
         "us": false
       }
     ]
