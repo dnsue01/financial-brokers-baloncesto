@@ -1,5 +1,9 @@
 # Financial Brokers Baloncesto
 
+Web del club de baloncesto de Santander. Reúne partidos y resultados, actualidad, información de los equipos sénior, vídeos y contacto.
+
+[Visitar la web](https://dnsue01.github.io/financial-brokers-baloncesto/)
+
 Web del C.D.E. Financial Brokers Aseguradores (Santander, Cantabria). HTML, CSS y JS estáticos publicados con GitHub Pages.
 
 ## Qué se actualiza solo
