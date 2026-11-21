@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T22:16:50.043Z",
+  "updated": "2026-11-21T19:27:11.120Z",
   "season": "2026/27",
   "teams": {
     "segunda": {
@@ -56,12 +56,12 @@
         "team": "4967",
         "name": "La Paz Torrelavega",
         "club": "189",
-        "pj": 6,
+        "pj": 7,
         "g": 4,
-        "p": 2,
-        "pf": 366,
-        "pc": 373,
-        "pts": 10,
+        "p": 3,
+        "pf": 425,
+        "pc": 440,
+        "pts": 11,
         "crest": "data/crests/189.jpg",
         "us": false
       },
@@ -92,6 +92,19 @@
         "us": false
       },
       {
+        "team": "5021",
+        "name": "Ribamontán al Mar",
+        "club": "125",
+        "pj": 7,
+        "g": 2,
+        "p": 5,
+        "pf": 484,
+        "pc": 588,
+        "pts": 9,
+        "crest": "data/crests/125.jpg",
+        "us": false
+      },
+      {
         "team": "4874",
         "name": "Castrobasket",
         "club": "212",
@@ -116,19 +129,6 @@
         "pts": 7,
         "crest": "data/crests/128.jpg",
         "us": false
-      },
-      {
-        "team": "5021",
-        "name": "Ribamontán al Mar",
-        "club": "125",
-        "pj": 6,
-        "g": 1,
-        "p": 5,
-        "pf": 417,
-        "pc": 529,
-        "pts": 7,
-        "crest": "data/crests/125.jpg",
-        "us": false
       }
     ],
     "primera": [
@@ -136,13 +136,26 @@
         "team": "4861",
         "name": "CBT Torrelavega",
         "club": "110",
-        "pj": 6,
-        "g": 5,
+        "pj": 7,
+        "g": 6,
         "p": 1,
-        "pf": 544,
-        "pc": 390,
-        "pts": 11,
+        "pf": 632,
+        "pc": 470,
+        "pts": 13,
         "crest": "data/crests/110.png",
+        "us": false
+      },
+      {
+        "team": "5004",
+        "name": "Daygon",
+        "club": "139",
+        "pj": 6,
+        "g": 4,
+        "p": 2,
+        "pf": 476,
+        "pc": 400,
+        "pts": 10,
+        "crest": "data/crests/139.jpg",
         "us": false
       },
       {
@@ -172,19 +185,6 @@
         "us": false
       },
       {
-        "team": "5004",
-        "name": "Daygon",
-        "club": "139",
-        "pj": 5,
-        "g": 4,
-        "p": 1,
-        "pf": 396,
-        "pc": 312,
-        "pts": 9,
-        "crest": "data/crests/139.jpg",
-        "us": false
-      },
-      {
         "team": "5038",
         "name": "SPBasket Rosa",
         "club": "227",
@@ -201,12 +201,12 @@
         "team": "4904",
         "name": "Financial Brokers",
         "club": "203",
-        "pj": 5,
-        "g": 2,
+        "pj": 6,
+        "g": 3,
         "p": 3,
-        "pf": 350,
-        "pc": 355,
-        "pts": 7,
+        "pf": 431,
+        "pc": 424,
+        "pts": 9,
         "crest": "data/crests/203.jpg",
         "us": true
       },
@@ -221,6 +221,19 @@
         "pc": 404,
         "pts": 7,
         "crest": "data/crests/172.png",
+        "us": false
+      },
+      {
+        "team": "4827",
+        "name": "Bezana",
+        "club": "190",
+        "pj": 6,
+        "g": 1,
+        "p": 5,
+        "pf": 427,
+        "pc": 476,
+        "pts": 7,
+        "crest": "data/crests/190.jpg",
         "us": false
       },
       {
@@ -260,19 +273,6 @@
         "pc": 501,
         "pts": 7,
         "crest": "data/crests/182.jpg",
-        "us": false
-      },
-      {
-        "team": "4827",
-        "name": "Bezana",
-        "club": "190",
-        "pj": 5,
-        "g": 1,
-        "p": 4,
-        "pf": 358,
-        "pc": 395,
-        "pts": 6,
-        "crest": "data/crests/190.jpg",
         "us": false
       }
     ]
@@ -467,8 +467,8 @@
       "rivalFull": "CANORIN LAS FLORES BEZANA",
       "rivalCrest": "data/crests/190.jpg",
       "venue": "Pabellón Monte, Santander",
-      "res": null,
-      "score": null
+      "res": "W",
+      "score": "81-69"
     },
     {
       "id": "49477",
